@@ -21,6 +21,7 @@ import android.support.annotation.RequiresApi;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
@@ -485,8 +486,8 @@ public class IndicatorSeekBar extends View {
     }
 
     private void drawTrack(Canvas canvas) {
+        int sectionSize = mTicksCount - 1 > 0 ? mTicksCount - 1 : 1;
         if (mCustomTrackSectionColorResult) {//the track has custom the section track color
-            int sectionSize = mTicksCount - 1 > 0 ? mTicksCount - 1 : 1;
             for (int i = 0; i < sectionSize; i++) {
                 if (mR2L) {
                     mStockPaint.setColor(mSectionTrackColorArray[sectionSize - i - 1]);
@@ -520,7 +521,19 @@ public class IndicatorSeekBar extends View {
             //draw progress track
             mStockPaint.setColor(mProgressTrackColor);
             mStockPaint.setStrokeWidth(mProgressTrackSize);
-            canvas.drawLine(mProgressTrack.left, mProgressTrack.top, mProgressTrack.right, mProgressTrack.bottom, mStockPaint);
+//            mShowTickMarksType == TickMarkType.TEXT ? mTextCenterX[i] - mTickTextsWidth[index] / 2.0f : mTextCenterX[i]
+            float right = mProgressTrack.right;
+            if (mShowTickMarksType == TickMarkType.TEXT) {
+                int index = getClosestIndex();
+                if (index == 0) {
+                    right = mProgressTrack.right + mTickTextsWidth[index];
+                } else if (index == sectionSize) {
+                    right = mBackgroundTrack.right;
+                } else {
+                    right = mProgressTrack.right + mTickTextsWidth[index] / 2;
+                }
+            }
+            canvas.drawLine(mProgressTrack.left, mProgressTrack.top, right, mProgressTrack.bottom, mStockPaint);
         }
     }
 
