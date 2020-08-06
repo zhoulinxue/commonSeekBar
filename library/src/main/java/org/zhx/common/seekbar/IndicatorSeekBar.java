@@ -212,7 +212,9 @@ public class IndicatorSeekBar extends View {
         mThumbSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_thumb_size, builder.thumbSize);
         mThumbDrawable = ta.getDrawable(R.styleable.IndicatorSeekBar_isb_thumb_drawable);
         mAdjustAuto = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_thumb_adjust_auto, true);
+        mHideThumb = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_thumb_is_hide, false);
         initThumbColor(ta.getColorStateList(R.styleable.IndicatorSeekBar_isb_thumb_color), builder.thumbColor);
+
         //thumb text
         mShowThumbText = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_show_thumb_text, builder.showThumbText);
         mThumbTextColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_thumb_text_color, builder.thumbTextColor);
@@ -511,14 +513,14 @@ public class IndicatorSeekBar extends View {
                 }
             }
         } else {
-            //draw progress track
-            mStockPaint.setColor(mProgressTrackColor);
-            mStockPaint.setStrokeWidth(mProgressTrackSize);
-            canvas.drawLine(mProgressTrack.left, mProgressTrack.top, mProgressTrack.right, mProgressTrack.bottom, mStockPaint);
             //draw BG track
             mStockPaint.setColor(mBackgroundTrackColor);
             mStockPaint.setStrokeWidth(mBackgroundTrackSize);
             canvas.drawLine(mBackgroundTrack.left, mBackgroundTrack.top, mBackgroundTrack.right, mBackgroundTrack.bottom, mStockPaint);
+            //draw progress track
+            mStockPaint.setColor(mProgressTrackColor);
+            mStockPaint.setStrokeWidth(mProgressTrackSize);
+            canvas.drawLine(mProgressTrack.left, mProgressTrack.top, mProgressTrack.right, mProgressTrack.bottom, mStockPaint);
         }
     }
 

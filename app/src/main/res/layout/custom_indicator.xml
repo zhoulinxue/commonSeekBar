@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.warkiz.indicatorseekbar.org.warkiz.indicatorseekbar.MainActivity">
+    android:layout_height="match_parent">
 
     <org.zhx.common.seekbar.IndicatorStayLayout
         android:layout_width="match_parent"
@@ -50,8 +49,12 @@
             app:isb_show_indicator="rectangle"
             app:isb_show_tick_marks_type="text"
             app:isb_show_tick_texts="true"
+            app:isb_thumb_is_hide="true"
             app:isb_tick_texts_array="@array/tick_below_text_length_5"
-            app:isb_ticks_count="5" />
+            app:isb_ticks_count="5"
+            app:isb_track_background_size="@dimen/dp22"
+            app:isb_track_progress_size="@dimen/dp16"
+            app:isb_track_rounded_corners="true" />
 
         <TextView
             style="@style/subtitle_text_style"

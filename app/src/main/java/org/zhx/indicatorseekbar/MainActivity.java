@@ -25,7 +25,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private static String[] sType = new String[]{"continuous", "discrete", "custom", "java", "indicator", "donation"};
+    private static String[] sType = new String[]{"continuous", "discrete", "custom", "java", "indicator"};
     private List<Fragment> mFragmentList = new ArrayList<>();
 
     @Override
