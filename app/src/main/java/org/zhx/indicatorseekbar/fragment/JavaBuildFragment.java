@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.warkiz.indicatorseekbar.R;
+
 import org.zhx.common.seekbar.IndicatorSeekBar;
 import org.zhx.common.seekbar.IndicatorStayLayout;
 import org.zhx.common.seekbar.IndicatorType;
@@ -35,8 +36,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView1.setText("1. continuous");
         content.addView(textView1);
         //CONTINUOUS
-        IndicatorSeekBar continuous = IndicatorSeekBar
-                .with(getContext())
+        IndicatorSeekBar.Builder continuous = new IndicatorSeekBar.Builder(getContext())
                 .max(200)
                 .min(10)
                 .progress(33)
@@ -50,17 +50,15 @@ public class JavaBuildFragment extends BaseFragment {
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray, null))
                 .trackBackgroundSize(2)
                 .showThumbText(true)
-                .thumbTextColor(getResources().getColor(R.color.color_gray, null))
-                .build();
+                .thumbTextColor(getResources().getColor(R.color.color_gray, null));
 
-        content.addView(continuous);
+        content.addView(continuous.build());
 
         TextView textView2 = getTextView();
         textView2.setText("2. continuous_texts_ends");
         content.addView(textView2);
         //CONTINUOUS_TEXTS_ENDS
-        IndicatorSeekBar continuous2TickTexts = IndicatorSeekBar
-                .with(getContext())
+        IndicatorSeekBar.Builder continuous2TickTexts = new IndicatorSeekBar.Builder(getContext())
                 .max(100)
                 .min(10)
                 .progress(33)
@@ -75,8 +73,7 @@ public class JavaBuildFragment extends BaseFragment {
                 .trackProgressColor(getResources().getColor(R.color.colorAccent, null))
                 .trackProgressSize(4)
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray, null))
-                .trackBackgroundSize(2)
-                .build();
+                .trackBackgroundSize(2);
 
         IndicatorStayLayout continuousStayLayout = new IndicatorStayLayout(getContext());
         continuousStayLayout.attachTo(continuous2TickTexts);
@@ -86,8 +83,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView22.setText("3. continuous_texts_ends_custom_ripple_thumb");
         content.addView(textView22);
         //CONTINUOUS_TEXTS_ENDS
-        IndicatorSeekBar continuous_texts_ends_custom_thumb = IndicatorSeekBar
-                .with(getContext())
+        IndicatorSeekBar.Builder continuous_texts_ends_custom_thumb = new IndicatorSeekBar.Builder(getContext())
                 .max(100)
                 .min(30)
                 .progress(33)
@@ -102,15 +98,13 @@ public class JavaBuildFragment extends BaseFragment {
                 .trackProgressColor(getResources().getColor(R.color.colorAccent, null))
                 .trackProgressSize(4)
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray, null))
-                .trackBackgroundSize(2)
-                .build();
-        content.addView(continuous_texts_ends_custom_thumb);
+                .trackBackgroundSize(2);
+        content.addView(continuous_texts_ends_custom_thumb.build());
 
         TextView textView3 = getTextView();
         textView3.setText("4. continuous_texts_ends_custom");
         content.addView(textView3);
-        IndicatorSeekBar continuous2TickTexts1 = IndicatorSeekBar
-                .with(getContext())
+        IndicatorSeekBar continuous2TickTexts1 = new IndicatorSeekBar.Builder(getContext())
                 .max(90)
                 .min(10)
                 .progress(33)
@@ -134,8 +128,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView4.setText("5. discrete_ticks");
         content.addView(textView4);
         //DISCRETE_TICKS
-        IndicatorSeekBar discrete_ticks = IndicatorSeekBar
-                .with(getContext())
+        IndicatorSeekBar.Builder discrete_ticks = new IndicatorSeekBar.Builder(getContext())
                 .max(50)
                 .min(10)
                 .progress(33)
@@ -150,18 +143,16 @@ public class JavaBuildFragment extends BaseFragment {
                 .trackProgressColor(getResources().getColor(R.color.colorAccent, null))
                 .trackProgressSize(4)
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray, null))
-                .trackBackgroundSize(2)
-                .build();
+                .trackBackgroundSize(2);
         IndicatorStayLayout indicatorStayLayout = new IndicatorStayLayout(getContext());
-        indicatorStayLayout.attachTo(discrete_ticks);
+        indicatorStayLayout.attachTo(discrete_ticks.build());
         content.addView(indicatorStayLayout);
 
         TextView textView5 = getTextView();
         textView5.setText("6. discrete_ticks_texts");
         content.addView(textView5);
         //DISCRETE_TICKS_TEXTS
-        IndicatorSeekBar discrete_ticks_texts = IndicatorSeekBar
-                .with(getContext())
+        IndicatorSeekBar.Builder discrete_ticks_texts = new IndicatorSeekBar.Builder(getContext())
                 .max(110)
                 .min(10)
                 .progress(53)
@@ -182,16 +173,14 @@ public class JavaBuildFragment extends BaseFragment {
                 .trackProgressColor(getResources().getColor(R.color.colorAccent, null))
                 .trackProgressSize(4)//dp
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray, null))
-                .trackBackgroundSize(2)//dp
-                .build();
-        content.addView(discrete_ticks_texts);
+                .trackBackgroundSize(2);
+        content.addView(discrete_ticks_texts.build());
 
         TextView textView6 = getTextView();
         textView6.setText("7. discrete_ticks_texts_custom");
         content.addView(textView6);
         String[] array = {"A", "B", "C", "D", "E", "F", "G"};
-        IndicatorSeekBar discrete_ticks_texts1 = IndicatorSeekBar
-                .with(getContext())
+        IndicatorSeekBar discrete_ticks_texts1 = new IndicatorSeekBar.Builder(getContext())
                 .max(200)
                 .min(10)
                 .progress(83)
@@ -216,14 +205,13 @@ public class JavaBuildFragment extends BaseFragment {
         textView7.setText("8. discrete_ticks_texts_ends");
         content.addView(textView7);
 
-        String[] array_ends = {"A", "", "", "", "", "", "G"};
-        IndicatorSeekBar discrete_ticks_texts_ends = IndicatorSeekBar
-                .with(getContext())
-                .max(100)
-                .min(10)
-                .progress(83)
-                .tickCount(7)
-                .showTickMarksType(TickMarkType.OVAL)
+        String[] array_ends = {"500", "", "", "", "900"};
+        IndicatorSeekBar.Builder discrete_ticks_texts_ends = new IndicatorSeekBar.Builder(getContext())
+                .max(Integer.valueOf(array_ends[array_ends.length - 1]))
+                .min(Integer.valueOf(array_ends[0]))
+                .progress(Integer.valueOf(array_ends[0]))
+                .tickCount(array_ends.length)
+                .showTickMarksType(TickMarkType.TEXT)
                 .tickMarksColor(getResources().getColorStateList(R.color.selector_tick_marks_color, null))
                 .tickTextsArray(array_ends)
                 .showTickTexts(true)
@@ -232,15 +220,17 @@ public class JavaBuildFragment extends BaseFragment {
                 .indicatorColor(getResources().getColor(R.color.color_blue, null))
                 .indicatorTextColor(Color.parseColor("#ffffff"))
                 .thumbColor(Color.parseColor("#ff0000"))
-                .thumbSize(14)
                 .trackProgressColor(getResources().getColor(R.color.color_blue, null))
-                .trackProgressSize(4)
+                .trackProgressSize(25)
                 .trackBackgroundColor(getResources().getColor(R.color.color_pink, null))
-                .trackBackgroundSize(2)
-                .build();
+                .trackBackgroundSize(25)
+                .PaddingTop(10)
+                .trackRoundedCorners(true);
 
         IndicatorStayLayout stayLayout = new IndicatorStayLayout(getContext());
-        stayLayout.attachTo(discrete_ticks_texts_ends);
+        IndicatorSeekBar bar = discrete_ticks_texts_ends.build();
+        bar.hideThumb(true);
+        stayLayout.attachTo(bar);
         content.addView(stayLayout);
 
         TextView textView8 = getTextView();

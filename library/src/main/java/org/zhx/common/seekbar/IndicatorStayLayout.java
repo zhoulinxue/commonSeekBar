@@ -60,6 +60,16 @@ public class IndicatorStayLayout extends LinearLayout {
      * If you want to initial seek bar by java code to make
      * indicator stay always,call this.
      *
+     * @param builder the direct child in indicatorStayLayout
+     */
+    public void attachTo(IndicatorSeekBar.Builder builder) {
+        attachTo(builder.build(), -2);
+    }
+
+    /**
+     * If you want to initial seek bar by java code to make
+     * indicator stay always,call this.
+     *
      * @param seekBar the direct child in indicatorStayLayout
      * @param index   the child index you wanted indicatorSeekBar to attach to IndicatorStayLayout;
      */
@@ -95,7 +105,7 @@ public class IndicatorStayLayout extends LinearLayout {
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             MarginLayoutParams layoutParams = new MarginLayoutParams(params);
             layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                    layoutParams.rightMargin, SizeUtils.dp2px(seekBar.getContext(), 2) );
+                    layoutParams.rightMargin, SizeUtils.dp2px(seekBar.getContext(), 2));
             addView(contentView, index, layoutParams);
             seekBar.showStayIndicator();
         }
