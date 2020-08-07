@@ -95,7 +95,7 @@ public class IndicatorStayLayout extends LinearLayout {
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             MarginLayoutParams layoutParams = new MarginLayoutParams(params);
             layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                    layoutParams.rightMargin, SizeUtils.dp2px(seekBar.getContext(), 2) - seekBar.getPaddingTop());
+                    layoutParams.rightMargin, SizeUtils.dp2px(seekBar.getContext(), 2) );
             addView(contentView, index, layoutParams);
             seekBar.showStayIndicator();
         }
