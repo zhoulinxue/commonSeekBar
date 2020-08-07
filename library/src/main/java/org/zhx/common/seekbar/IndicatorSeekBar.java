@@ -523,17 +523,29 @@ public class IndicatorSeekBar extends View {
             mStockPaint.setStrokeWidth(mProgressTrackSize);
 //            mShowTickMarksType == TickMarkType.TEXT ? mTextCenterX[i] - mTickTextsWidth[index] / 2.0f : mTextCenterX[i]
             float right = mProgressTrack.right;
+            float left = mProgressTrack.left;
             if (mShowTickMarksType == TickMarkType.TEXT) {
-                int index = getClosestIndex();
-                if (index == 0) {
-                    right = mProgressTrack.right + mTickTextsWidth[index];
-                } else if (index == sectionSize) {
-                    right = mBackgroundTrack.right;
+                if (!mR2L) {
+                    int index = getClosestIndex();
+                    if (index == 0) {
+                        right = mProgressTrack.right + mTickTextsWidth[index];
+                    } else if (index == sectionSize) {
+                        right = mBackgroundTrack.right;
+                    } else {
+                        right = mProgressTrack.right + mTickTextsWidth[index] / 2;
+                    }
                 } else {
-                    right = mProgressTrack.right + mTickTextsWidth[index] / 2;
+                    int index = getClosestIndex();
+                    if (index == 0) {
+                        left = mProgressTrack.left - mTickTextsWidth[index];
+                    } else if (index == sectionSize) {
+                        left = mBackgroundTrack.left;
+                    } else {
+                        left = mProgressTrack.left - mTickTextsWidth[index] / 2;
+                    }
                 }
             }
-            canvas.drawLine(mProgressTrack.left, mProgressTrack.top, right, mProgressTrack.bottom, mStockPaint);
+            canvas.drawLine(left, mProgressTrack.top, right, mProgressTrack.bottom, mStockPaint);
         }
     }
 

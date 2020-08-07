@@ -52,6 +52,7 @@
             app:isb_thumb_is_hide="true"
             app:isb_tick_texts_array="@array/tick_below_text_length_5"
             app:isb_ticks_count="5"
+            app:isb_r2l="true"
             app:isb_tick_texts_color="@color/color_yellow"
             app:isb_track_background_size="@dimen/dp22"
             app:isb_track_progress_size="@dimen/dp16"
