@@ -1,19 +1,26 @@
 package org.zhx.common.seekbar;
 
 /**
- * created by zhuangguangquan on 2018/6/3
- * <p>
- * save the params when the seek bar is seeking.
+ * @ProjectName: commonSeekBar
+ * @Package: org.zhx.common.seekbar
+ * @ClassName: SeekParams
+ * @Description:java类作用描述
+ * @Author: zhouxue
+ * @CreateDate: 2020/8/8 14:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2020/8/8 14:46
+ * @UpdateRemark: 更新说明
+ * @Version:1.0
  */
 public class SeekParams {
 
-    SeekParams(IndicatorSeekBar seekBar) {
+    SeekParams(CommonSeekBar seekBar) {
         this.seekBar = seekBar;
     }
 
     //for continuous series seek bar
     // The SeekBar whose progress has changed
-    public IndicatorSeekBar seekBar;
+    public CommonSeekBar seekBar;
     //The current progress level.The default value for min is 0, max is 100.
     public int progress;
     //The current progress level.The default value for min is 0.0, max is 100.0.

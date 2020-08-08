@@ -19,154 +19,154 @@
             style="@style/subtitle_text_style"
             android:text="1. default, ticks_count=5" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="25"
-            app:isb_tick_marks_size="3dp"
-            app:isb_ticks_count="5" />
+            app:com_progress="25"
+            app:com_tick_marks_size="3dp"
+            app:com_ticks_count="5" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="2. show_tick_marks_type=divider, customSectionTrackColor" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:id="@+id/custom_section_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="30"
-            app:isb_show_indicator="rectangle"
-            app:isb_show_tick_marks_type="divider"
-            app:isb_tick_marks_color="#FFFFFFFF"
-            app:isb_ticks_count="5"
-            app:isb_track_background_size="4dp"
-            app:isb_track_progress_size="4dp" />
+            app:com_progress="30"
+            app:com_show_indicator="rectangle"
+            app:com_show_tick_marks_type="divider"
+            app:com_tick_marks_color="#FFFFFFFF"
+            app:com_ticks_count="5"
+            app:com_track_background_size="4dp"
+            app:com_track_progress_size="4dp" />
 
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="3. seek_smoothly=true,\n show_tick_marks_type=square,\n thumb_size=13dp,\n thumb_drawable=@mipmap/ic_launcher" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="50"
-            app:isb_seek_smoothly="true"
-            app:isb_show_indicator="circular_bubble"
-            app:isb_show_tick_marks_type="square"
-            app:isb_thumb_drawable="@mipmap/ic_launcher"
-            app:isb_thumb_size="13dp"
-            app:isb_ticks_count="4" />
+            app:com_progress="50"
+            app:com_seek_smoothly="true"
+            app:com_show_indicator="circular_bubble"
+            app:com_show_tick_marks_type="square"
+            app:com_thumb_drawable="@mipmap/ic_launcher"
+            app:com_thumb_size="13dp"
+            app:com_ticks_count="4" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="4. seek_smoothly=true, show_tick_marks_type=oval,\n customTickTexts,thumb_adjust_auto=false" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:id="@+id/custom_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="30"
-            app:isb_seek_smoothly="true"
-            app:isb_show_indicator="rounded_rectangle"
-            app:isb_show_tick_marks_type="oval"
-            app:isb_show_tick_texts="true"
-            app:isb_thumb_adjust_auto="false"
-            app:isb_ticks_count="7"
-            app:isb_track_progress_color="@color/color_blue" />
+            app:com_progress="30"
+            app:com_seek_smoothly="true"
+            app:com_show_indicator="rounded_rectangle"
+            app:com_show_tick_marks_type="oval"
+            app:com_show_tick_texts="true"
+            app:com_thumb_adjust_auto="false"
+            app:com_ticks_count="7"
+            app:com_track_progress_color="@color/color_blue" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="5. ticks_count=6, indicator_stay" />
 
-        <org.zhx.common.seekbar.IndicatorStayLayout
+        <org.zhx.common.seekbar.CommoneStayLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <org.zhx.common.seekbar.IndicatorSeekBar
+            <org.zhx.common.seekbar.CommonSeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:isb_progress="30"
-                app:isb_show_tick_marks_type="oval"
-                app:isb_ticks_count="6" />
+                app:com_progress="30"
+                app:com_show_tick_marks_type="oval"
+                app:com_ticks_count="6" />
 
-        </org.zhx.common.seekbar.IndicatorStayLayout>
+        </org.zhx.common.seekbar.CommoneStayLayout>
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="6. tick_marks_drawable=@mipmap/ic_launcher, tick_marks_swept_hide=true" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="25"
-            app:isb_show_indicator="circular_bubble"
-            app:isb_tick_marks_drawable="@mipmap/ic_launcher"
-            app:isb_tick_marks_size="15dp"
-            app:isb_tick_marks_swept_hide="true"
-            app:isb_ticks_count="5" />
+            app:com_progress="25"
+            app:com_show_indicator="circular_bubble"
+            app:com_tick_marks_drawable="@mipmap/ic_launcher"
+            app:com_tick_marks_size="15dp"
+            app:com_tick_marks_swept_hide="true"
+            app:com_ticks_count="5" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="7. tick_texts_array=@array/small_normal_middle_large_length_7, tick_marks_ends_hide=true" />
 
-        <org.zhx.common.seekbar.IndicatorStayLayout
+        <org.zhx.common.seekbar.CommoneStayLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <org.zhx.common.seekbar.IndicatorSeekBar
+            <org.zhx.common.seekbar.CommonSeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:isb_progress="66"
-                app:isb_show_indicator="rectangle"
-                app:isb_show_tick_marks_type="divider"
-                app:isb_show_tick_texts="true"
-                app:isb_tick_marks_color="@color/color_blue"
-                app:isb_tick_marks_ends_hide="true"
-                app:isb_tick_texts_array="@array/small_normal_middle_large_length_7"
-                app:isb_tick_texts_color="@color/color_blue"
-                app:isb_ticks_count="7" />
-        </org.zhx.common.seekbar.IndicatorStayLayout>
+                app:com_progress="66"
+                app:com_show_indicator="rectangle"
+                app:com_show_tick_marks_type="divider"
+                app:com_show_tick_texts="true"
+                app:com_tick_marks_color="@color/color_blue"
+                app:com_tick_marks_ends_hide="true"
+                app:com_tick_texts_array="@array/small_normal_middle_large_length_7"
+                app:com_tick_texts_color="@color/color_blue"
+                app:com_ticks_count="7" />
+        </org.zhx.common.seekbar.CommoneStayLayout>
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="8. tick_texts_color=@color/selector_tick_texts_3_color, r2l=true" />
 
-        <org.zhx.common.seekbar.IndicatorStayLayout
+        <org.zhx.common.seekbar.CommoneStayLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <org.zhx.common.seekbar.IndicatorSeekBar
+            <org.zhx.common.seekbar.CommonSeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:isb_progress="50"
-                app:isb_r2l="true"
-                app:isb_show_indicator="circular_bubble"
-                app:isb_show_tick_marks_type="oval"
-                app:isb_show_tick_texts="true"
-                app:isb_tick_texts_color="@color/selector_tick_texts_3_color"
-                app:isb_ticks_count="7" />
-        </org.zhx.common.seekbar.IndicatorStayLayout>
+                app:com_progress="50"
+                app:com_r2l="true"
+                app:com_show_indicator="circular_bubble"
+                app:com_show_tick_marks_type="oval"
+                app:com_show_tick_texts="true"
+                app:com_tick_texts_color="@color/selector_tick_texts_3_color"
+                app:com_ticks_count="7" />
+        </org.zhx.common.seekbar.CommoneStayLayout>
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="9. tick_marks_color=@color/selector_tick_marks_color,thumb_adjust_auto=false" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_max="-40"
-            app:isb_min="-100"
-            app:isb_progress="-70"
-            app:isb_seek_smoothly="true"
-            app:isb_show_indicator="rectangle"
-            app:isb_show_tick_marks_type="square"
-            app:isb_show_tick_texts="true"
-            app:isb_thumb_adjust_auto="false"
-            app:isb_tick_marks_color="@color/selector_tick_marks_color"
-            app:isb_ticks_count="5"
-            app:isb_track_progress_color="@color/color_blue"
-            app:isb_track_progress_size="3dp" />
+            app:com_max="-40"
+            app:com_min="-100"
+            app:com_progress="-70"
+            app:com_seek_smoothly="true"
+            app:com_show_indicator="rectangle"
+            app:com_show_tick_marks_type="square"
+            app:com_show_tick_texts="true"
+            app:com_thumb_adjust_auto="false"
+            app:com_tick_marks_color="@color/selector_tick_marks_color"
+            app:com_ticks_count="5"
+            app:com_track_progress_color="@color/color_blue"
+            app:com_track_progress_size="3dp" />
 
         <TextView
             style="@style/subtitle_text_style"
@@ -196,31 +196,31 @@
             android:id="@+id/tick_text"
             style="@style/des_text_style" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:id="@+id/listener"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="40"
-            app:isb_show_indicator="circular_bubble"
-            app:isb_show_tick_marks_type="oval"
-            app:isb_show_tick_texts="true"
-            app:isb_tick_texts_array="@array/tick_below_text_length_5"
-            app:isb_ticks_count="5" />
+            app:com_progress="40"
+            app:com_show_indicator="circular_bubble"
+            app:com_show_tick_marks_type="oval"
+            app:com_show_tick_texts="true"
+            app:com_tick_texts_array="@array/tick_below_text_length_5"
+            app:com_ticks_count="5" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="11. setTickMarksDrawable, tick_texts_array=@array/last_next_length_6" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:id="@+id/tick_drawable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
-            app:isb_progress="40"
-            app:isb_show_tick_marks_type="oval"
-            app:isb_show_tick_texts="true"
-            app:isb_tick_texts_array="@array/last_next_length_6"
-            app:isb_ticks_count="6" />
+            app:com_progress="40"
+            app:com_show_tick_marks_type="oval"
+            app:com_show_tick_texts="true"
+            app:com_tick_texts_array="@array/last_next_length_6"
+            app:com_ticks_count="6" />
 
         <include layout="@layout/source_code_link" />
     </LinearLayout>

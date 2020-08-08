@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.warkiz.indicatorseekbar.R;
 import org.zhx.common.seekbar.ColorCollector;
-import org.zhx.common.seekbar.IndicatorSeekBar;
+import org.zhx.common.seekbar.CommonSeekBar;
 import org.zhx.common.seekbar.OnSeekChangeListener;
 import org.zhx.common.seekbar.SeekParams;
 
@@ -24,16 +24,16 @@ public class DiscreteFragment extends BaseFragment {
     @Override
     protected void initView(View root) {
         //customTickTexts
-        IndicatorSeekBar seekBar = root.findViewById(R.id.custom_text);
+        CommonSeekBar seekBar = root.findViewById(R.id.custom_text);
         String[] arr = {"A", "a", "B", "b", "C", "c", "D"};
         seekBar.customTickTexts(arr);
 
         //tick_drawable
-        IndicatorSeekBar tick_drawable = root.findViewById(R.id.tick_drawable);
+        CommonSeekBar tick_drawable = root.findViewById(R.id.tick_drawable);
         tick_drawable.setTickMarksDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
 
         //custom section color
-        IndicatorSeekBar sectionSeekBar = root.findViewById(R.id.custom_section_color);
+        CommonSeekBar sectionSeekBar = root.findViewById(R.id.custom_section_color);
 
         sectionSeekBar.customSectionTrackColor(new ColorCollector() {
             @Override
@@ -48,7 +48,7 @@ public class DiscreteFragment extends BaseFragment {
         });
 
         //set listener
-        IndicatorSeekBar listenerSeekBar = root.findViewById(R.id.listener);
+        CommonSeekBar listenerSeekBar = root.findViewById(R.id.listener);
         final TextView states = root.findViewById(R.id.states);
         states.setText("states: ");
         final TextView progress = root.findViewById(R.id.progress);
@@ -73,7 +73,7 @@ public class DiscreteFragment extends BaseFragment {
             }
 
             @Override
-            public void onStartTrackingTouch(IndicatorSeekBar seekBar) {
+            public void onStartTrackingTouch(CommonSeekBar seekBar) {
                 states.setText("states: onStart");
                 progress.setText("progress: " + seekBar.getProgress());
                 progress_float.setText("progress_float: " + seekBar.getProgressFloat());
@@ -81,7 +81,7 @@ public class DiscreteFragment extends BaseFragment {
             }
 
             @Override
-            public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
+            public void onStopTrackingTouch(CommonSeekBar seekBar) {
                 states.setText("states: onStop");
                 progress.setText("progress: " + seekBar.getProgress());
                 progress_float.setText("progress_float: " + seekBar.getProgressFloat());

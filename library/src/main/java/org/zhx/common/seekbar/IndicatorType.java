@@ -1,7 +1,16 @@
 package org.zhx.common.seekbar;
 
 /**
- * created by zhuangguangquan on  2017/9/9
+ * @ProjectName: commonSeekBar
+ * @Package: org.zhx.common.seekbar
+ * @ClassName: IndicatorType
+ * @Description:java类作用描述
+ * @Author: zhouxue
+ * @CreateDate: 2020/8/8 14:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2020/8/8 14:46
+ * @UpdateRemark: 更新说明
+ * @Version:1.0
  */
 public interface IndicatorType {
     /**

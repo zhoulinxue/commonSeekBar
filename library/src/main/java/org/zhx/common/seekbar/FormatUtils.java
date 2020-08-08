@@ -5,16 +5,16 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 
 /**
- * <p>
- * https://github.com/warkiz/IndicatorSeekBar
- * <p>
- * Donation/打赏:
- * If this library is helpful to you ,you can give me a donation by:
- *
- * @see <a href="https://www.paypal.me/BuyMeACupOfTeaThx">ZhuanGuangQuan's Paypal</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true">微信支付</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true">支付宝</a>
- * <p>
+ * @ProjectName: commonSeekBar
+ * @Package: org.zhx.common.seekbar
+ * @ClassName: FormatUtils
+ * @Description:java类作用描述
+ * @Author: zhouxue
+ * @CreateDate: 2020/8/8 14:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2020/8/8 14:46
+ * @UpdateRemark: 更新说明
+ * @Version:1.0
  */
 class FormatUtils {
 

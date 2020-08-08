@@ -8,31 +8,28 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 /**
- * created by zhuangguangquan on 2018/5/27
- * <p>
- * the container for IndicatorSeekBar to make the indicator stay always
- * <p>
- * https://github.com/warkiz/IndicatorSeekBar
- * <p>
- * Donation/打赏:
- * If this library is helpful to you ,you can give me a donation by:
- *
- * @see <a href="https://www.paypal.me/BuyMeACupOfTeaThx">ZhuanGuangQuan's Paypal</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true">微信支付</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true">支付宝</a>
- * <p>
+ * @ProjectName: commonSeekBar
+ * @Package: org.zhx.common.seekbar
+ * @ClassName: CommoneStayLayout
+ * @Description:java类作用描述
+ * @Author: zhouxue
+ * @CreateDate: 2020/8/8 14:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2020/8/8 14:46
+ * @UpdateRemark: 更新说明
+ * @Version:1.0
  */
-public class IndicatorStayLayout extends LinearLayout {
+public class CommoneStayLayout extends LinearLayout {
 
-    public IndicatorStayLayout(Context context) {
+    public CommoneStayLayout(Context context) {
         this(context, null);
     }
 
-    public IndicatorStayLayout(Context context, @Nullable AttributeSet attrs) {
+    public CommoneStayLayout(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public IndicatorStayLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CommoneStayLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setOrientation(VERTICAL);
     }
@@ -52,7 +49,7 @@ public class IndicatorStayLayout extends LinearLayout {
      *
      * @param seekBar the direct child in indicatorStayLayout
      */
-    public void attachTo(IndicatorSeekBar seekBar) {
+    public void attachTo(CommonSeekBar seekBar) {
         attachTo(seekBar, -2);
     }
 
@@ -62,7 +59,7 @@ public class IndicatorStayLayout extends LinearLayout {
      *
      * @param builder the direct child in indicatorStayLayout
      */
-    public void attachTo(IndicatorSeekBar.Builder builder) {
+    public void attachTo(CommonSeekBar.Builder builder) {
         attachTo(builder.build(), -2);
     }
 
@@ -73,7 +70,7 @@ public class IndicatorStayLayout extends LinearLayout {
      * @param seekBar the direct child in indicatorStayLayout
      * @param index   the child index you wanted indicatorSeekBar to attach to IndicatorStayLayout;
      */
-    public void attachTo(IndicatorSeekBar seekBar, int index) {
+    public void attachTo(CommonSeekBar seekBar, int index) {
         if (seekBar == null) {
             throw new NullPointerException("the seek bar wanna attach to IndicatorStayLayout " +
                     "can not be null value.");
@@ -89,15 +86,15 @@ public class IndicatorStayLayout extends LinearLayout {
      * @param index the index you want the seek bar to located in IndicatorStayLayout.
      */
     private void layoutIndicator(View child, int index) {
-        if (child instanceof IndicatorSeekBar) {
-            IndicatorSeekBar seekBar = (IndicatorSeekBar) child;
+        if (child instanceof CommonSeekBar) {
+            CommonSeekBar seekBar = (CommonSeekBar) child;
             seekBar.setIndicatorStayAlways(true);
             View contentView = seekBar.getIndicatorContentView();
             if (contentView == null) {
                 throw new IllegalStateException("Can not find any indicator in the IndicatorSeekBar, please " +
                         "make sure you have called the attr: SHOW_INDICATOR_TYPE for IndicatorSeekBar and the value is not IndicatorType.NONE.");
             }
-            if (contentView instanceof IndicatorSeekBar) {
+            if (contentView instanceof CommonSeekBar) {
                 throw new IllegalStateException("IndicatorSeekBar can not be a contentView for Indicator in case this inflating loop.");
             }
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
@@ -105,7 +102,7 @@ public class IndicatorStayLayout extends LinearLayout {
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             MarginLayoutParams layoutParams = new MarginLayoutParams(params);
             layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                    layoutParams.rightMargin, SizeUtils.dp2px(seekBar.getContext(), 2));
+                    layoutParams.rightMargin, DenyUtils.dp2px(seekBar.getContext(), 2));
             addView(contentView, index, layoutParams);
             seekBar.showStayIndicator();
         }

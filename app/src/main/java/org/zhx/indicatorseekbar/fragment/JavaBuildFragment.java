@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.warkiz.indicatorseekbar.R;
 
-import org.zhx.common.seekbar.IndicatorSeekBar;
-import org.zhx.common.seekbar.IndicatorStayLayout;
+import org.zhx.common.seekbar.CommonSeekBar;
+import org.zhx.common.seekbar.CommoneStayLayout;
 import org.zhx.common.seekbar.IndicatorType;
 import org.zhx.common.seekbar.TickMarkType;
 
@@ -36,7 +36,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView1.setText("1. continuous");
         content.addView(textView1);
         //CONTINUOUS
-        IndicatorSeekBar.Builder continuous = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar.Builder continuous = new CommonSeekBar.Builder(getContext())
                 .max(200)
                 .min(10)
                 .progress(33)
@@ -58,7 +58,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView2.setText("2. continuous_texts_ends");
         content.addView(textView2);
         //CONTINUOUS_TEXTS_ENDS
-        IndicatorSeekBar.Builder continuous2TickTexts = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar.Builder continuous2TickTexts = new CommonSeekBar.Builder(getContext())
                 .max(100)
                 .min(10)
                 .progress(33)
@@ -75,7 +75,7 @@ public class JavaBuildFragment extends BaseFragment {
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray, null))
                 .trackBackgroundSize(2);
 
-        IndicatorStayLayout continuousStayLayout = new IndicatorStayLayout(getContext());
+        CommoneStayLayout continuousStayLayout = new CommoneStayLayout(getContext());
         continuousStayLayout.attachTo(continuous2TickTexts);
         content.addView(continuousStayLayout);
 
@@ -83,7 +83,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView22.setText("3. continuous_texts_ends_custom_ripple_thumb");
         content.addView(textView22);
         //CONTINUOUS_TEXTS_ENDS
-        IndicatorSeekBar.Builder continuous_texts_ends_custom_thumb = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar.Builder continuous_texts_ends_custom_thumb = new CommonSeekBar.Builder(getContext())
                 .max(100)
                 .min(30)
                 .progress(33)
@@ -104,7 +104,7 @@ public class JavaBuildFragment extends BaseFragment {
         TextView textView3 = getTextView();
         textView3.setText("4. continuous_texts_ends_custom");
         content.addView(textView3);
-        IndicatorSeekBar continuous2TickTexts1 = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar continuous2TickTexts1 = new CommonSeekBar.Builder(getContext())
                 .max(90)
                 .min(10)
                 .progress(33)
@@ -128,7 +128,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView4.setText("5. discrete_ticks");
         content.addView(textView4);
         //DISCRETE_TICKS
-        IndicatorSeekBar.Builder discrete_ticks = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar.Builder discrete_ticks = new CommonSeekBar.Builder(getContext())
                 .max(50)
                 .min(10)
                 .progress(33)
@@ -144,7 +144,7 @@ public class JavaBuildFragment extends BaseFragment {
                 .trackProgressSize(4)
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray, null))
                 .trackBackgroundSize(2);
-        IndicatorStayLayout indicatorStayLayout = new IndicatorStayLayout(getContext());
+        CommoneStayLayout indicatorStayLayout = new CommoneStayLayout(getContext());
         indicatorStayLayout.attachTo(discrete_ticks.build());
         content.addView(indicatorStayLayout);
 
@@ -152,7 +152,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView5.setText("6. discrete_ticks_texts");
         content.addView(textView5);
         //DISCRETE_TICKS_TEXTS
-        IndicatorSeekBar.Builder discrete_ticks_texts = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar.Builder discrete_ticks_texts = new CommonSeekBar.Builder(getContext())
                 .max(110)
                 .min(10)
                 .progress(53)
@@ -180,7 +180,7 @@ public class JavaBuildFragment extends BaseFragment {
         textView6.setText("7. discrete_ticks_texts_custom");
         content.addView(textView6);
         String[] array = {"A", "B", "C", "D", "E", "F", "G"};
-        IndicatorSeekBar discrete_ticks_texts1 = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar discrete_ticks_texts1 = new CommonSeekBar.Builder(getContext())
                 .max(200)
                 .min(10)
                 .progress(83)
@@ -206,7 +206,7 @@ public class JavaBuildFragment extends BaseFragment {
         content.addView(textView7);
 
         String[] array_ends = {"500", "", "", "", "900"};
-        IndicatorSeekBar.Builder discrete_ticks_texts_ends = new IndicatorSeekBar.Builder(getContext())
+        CommonSeekBar.Builder discrete_ticks_texts_ends = new CommonSeekBar.Builder(getContext())
                 .max(Integer.valueOf(array_ends[array_ends.length - 1]))
                 .min(Integer.valueOf(array_ends[0]))
                 .progress(Integer.valueOf(array_ends[0]))
@@ -225,8 +225,8 @@ public class JavaBuildFragment extends BaseFragment {
                 .indicatorDrawable(R.drawable.indicator_rounded_corners)
                 .trackRoundedCorners(true);
 
-        IndicatorStayLayout stayLayout = new IndicatorStayLayout(getContext());
-        IndicatorSeekBar bar = discrete_ticks_texts_ends.build();
+        CommoneStayLayout stayLayout = new CommoneStayLayout(getContext());
+        CommonSeekBar bar = discrete_ticks_texts_ends.build();
         bar.hideThumb(true);
         stayLayout.attachTo(bar);
         content.addView(stayLayout);

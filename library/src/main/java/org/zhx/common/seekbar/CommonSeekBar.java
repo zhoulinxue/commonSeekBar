@@ -24,7 +24,6 @@ import android.support.annotation.RequiresApi;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
@@ -38,24 +37,19 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
 /**
- * created by zhuangguangquan on 2017/9/1
- * <p>
- * A custom SeekBar on Android, which can be changed the size ,
- * color , thumb drawable , tick drawable , texts , indicator;
- * also can show an indicator view above SeekBar when seeking.
- * <p>
- * https://github.com/warkiz/IndicatorSeekBar
- * <p>
- * Donation/打赏:
- * If this library is helpful to you ,you can give me a donation by:
- *
- * @see <a href="https://www.paypal.me/BuyMeACupOfTeaThx">ZhuanGuangQuan's Paypal</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true">微信支付</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true">支付宝</a>
- * <p>
+ * @ProjectName: commonSeekBar
+ * @Package: org.zhx.common.seekbar
+ * @ClassName: CommonSeekBar
+ * @Description:java类作用描述
+ * @Author: zhouxue
+ * @CreateDate: 2020/8/8 14:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2020/8/8 14:46
+ * @UpdateRemark: 更新说明
+ * @Version:1.0
  */
 
-public class IndicatorSeekBar extends View {
+public class CommonSeekBar extends View {
     private static final int THUMB_MAX_WIDTH = 30;
     private static final String FORMAT_PROGRESS = "${PROGRESS}";
     private static final String FORMAT_TICK_TEXT = "${TICK_TEXT}";
@@ -152,11 +146,11 @@ public class IndicatorSeekBar extends View {
     private boolean mAdjustAuto;
     private int mIndicatorDrawable;
 
-    public IndicatorSeekBar(Context context) {
+    public CommonSeekBar(Context context) {
         this(context, null);
     }
 
-    public IndicatorSeekBar(Context context, AttributeSet attrs) {
+    public CommonSeekBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
         initAttrs(mContext, attrs);
@@ -164,7 +158,7 @@ public class IndicatorSeekBar extends View {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public IndicatorSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CommonSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
         initAttrs(mContext, attrs);
@@ -181,11 +175,11 @@ public class IndicatorSeekBar extends View {
      * ...
      * .build();
      */
-    IndicatorSeekBar(Builder builder) {
+    CommonSeekBar(Builder builder) {
         super(builder.context);
         this.mContext = builder.context;
-        mPaddingTop = SizeUtils.dp2px(mContext, builder.mPaddingTop);
-        int defaultPadding = SizeUtils.dp2px(mContext, mPaddingTop == 0 ? 16 : mPaddingTop);
+        mPaddingTop = DenyUtils.dp2px(mContext, builder.mPaddingTop);
+        int defaultPadding = DenyUtils.dp2px(mContext, mPaddingTop == 0 ? 16 : mPaddingTop);
         setPadding(defaultPadding, getPaddingTop(), defaultPadding, getPaddingBottom());
         this.apply(builder);
         initParams();
@@ -197,58 +191,58 @@ public class IndicatorSeekBar extends View {
             this.apply(builder);
             return;
         }
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.IndicatorSeekBar);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CommonSeekBar);
         //seekBar
-        mMax = ta.getFloat(R.styleable.IndicatorSeekBar_isb_max, builder.max);
-        mMin = ta.getFloat(R.styleable.IndicatorSeekBar_isb_min, builder.min);
-        mProgress = ta.getFloat(R.styleable.IndicatorSeekBar_isb_progress, builder.progress);
-        mIsFloatProgress = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_progress_value_float, builder.progressValueFloat);
-        mUserSeekable = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_user_seekable, builder.userSeekable);
-        mClearPadding = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_clear_default_padding, builder.clearPadding);
-        mOnlyThumbDraggable = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_only_thumb_draggable, builder.onlyThumbDraggable);
-        mSeekSmoothly = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_seek_smoothly, builder.seekSmoothly);
-        mR2L = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_r2l, builder.r2l);
+        mMax = ta.getFloat(R.styleable.CommonSeekBar_com_max, builder.max);
+        mMin = ta.getFloat(R.styleable.CommonSeekBar_com_min, builder.min);
+        mProgress = ta.getFloat(R.styleable.CommonSeekBar_com_progress, builder.progress);
+        mIsFloatProgress = ta.getBoolean(R.styleable.CommonSeekBar_com_progress_value_float, builder.progressValueFloat);
+        mUserSeekable = ta.getBoolean(R.styleable.CommonSeekBar_com_user_seekable, builder.userSeekable);
+        mClearPadding = ta.getBoolean(R.styleable.CommonSeekBar_com_clear_default_padding, builder.clearPadding);
+        mOnlyThumbDraggable = ta.getBoolean(R.styleable.CommonSeekBar_com_only_thumb_draggable, builder.onlyThumbDraggable);
+        mSeekSmoothly = ta.getBoolean(R.styleable.CommonSeekBar_com_seek_smoothly, builder.seekSmoothly);
+        mR2L = ta.getBoolean(R.styleable.CommonSeekBar_com_r2l, builder.r2l);
         //track
-        mBackgroundTrackSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_track_background_size, builder.trackBackgroundSize);
-        mProgressTrackSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_track_progress_size, builder.trackProgressSize);
-        mBackgroundTrackColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_track_background_color, builder.trackBackgroundColor);
-        mProgressTrackColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_track_progress_color, builder.trackProgressColor);
-        mTrackRoundedCorners = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_track_rounded_corners, builder.trackRoundedCorners);
+        mBackgroundTrackSize = ta.getDimensionPixelSize(R.styleable.CommonSeekBar_com_track_background_size, builder.trackBackgroundSize);
+        mProgressTrackSize = ta.getDimensionPixelSize(R.styleable.CommonSeekBar_com_track_progress_size, builder.trackProgressSize);
+        mBackgroundTrackColor = ta.getColor(R.styleable.CommonSeekBar_com_track_background_color, builder.trackBackgroundColor);
+        mProgressTrackColor = ta.getColor(R.styleable.CommonSeekBar_com_track_progress_color, builder.trackProgressColor);
+        mTrackRoundedCorners = ta.getBoolean(R.styleable.CommonSeekBar_com_track_rounded_corners, builder.trackRoundedCorners);
         //thumb
-        mThumbSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_thumb_size, builder.thumbSize);
-        mThumbDrawable = ta.getDrawable(R.styleable.IndicatorSeekBar_isb_thumb_drawable);
-        mAdjustAuto = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_thumb_adjust_auto, true);
-        mHideThumb = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_thumb_is_hide, false);
-        initThumbColor(ta.getColorStateList(R.styleable.IndicatorSeekBar_isb_thumb_color), builder.thumbColor);
+        mThumbSize = ta.getDimensionPixelSize(R.styleable.CommonSeekBar_com_thumb_size, builder.thumbSize);
+        mThumbDrawable = ta.getDrawable(R.styleable.CommonSeekBar_com_thumb_drawable);
+        mAdjustAuto = ta.getBoolean(R.styleable.CommonSeekBar_com_thumb_adjust_auto, true);
+        mHideThumb = ta.getBoolean(R.styleable.CommonSeekBar_com_thumb_is_hide, false);
+        initThumbColor(ta.getColorStateList(R.styleable.CommonSeekBar_com_thumb_color), builder.thumbColor);
 
         //thumb text
-        mShowThumbText = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_show_thumb_text, builder.showThumbText);
-        mThumbTextColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_thumb_text_color, builder.thumbTextColor);
+        mShowThumbText = ta.getBoolean(R.styleable.CommonSeekBar_com_show_thumb_text, builder.showThumbText);
+        mThumbTextColor = ta.getColor(R.styleable.CommonSeekBar_com_thumb_text_color, builder.thumbTextColor);
         //tickMarks
-        mTicksCount = ta.getInt(R.styleable.IndicatorSeekBar_isb_ticks_count, builder.tickCount);
-        mShowTickMarksType = ta.getInt(R.styleable.IndicatorSeekBar_isb_show_tick_marks_type, builder.showTickMarksType);
-        mTickMarksSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_tick_marks_size, builder.tickMarksSize);
-        initTickMarksColor(ta.getColorStateList(R.styleable.IndicatorSeekBar_isb_tick_marks_color), builder.tickMarksColor);
-        mTickMarksDrawable = ta.getDrawable(R.styleable.IndicatorSeekBar_isb_tick_marks_drawable);
-        mTickMarksSweptHide = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_tick_marks_swept_hide, builder.tickMarksSweptHide);
-        mTickMarksEndsHide = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_tick_marks_ends_hide, builder.tickMarksEndsHide);
+        mTicksCount = ta.getInt(R.styleable.CommonSeekBar_com_ticks_count, builder.tickCount);
+        mShowTickMarksType = ta.getInt(R.styleable.CommonSeekBar_com_show_tick_marks_type, builder.showTickMarksType);
+        mTickMarksSize = ta.getDimensionPixelSize(R.styleable.CommonSeekBar_com_tick_marks_size, builder.tickMarksSize);
+        initTickMarksColor(ta.getColorStateList(R.styleable.CommonSeekBar_com_tick_marks_color), builder.tickMarksColor);
+        mTickMarksDrawable = ta.getDrawable(R.styleable.CommonSeekBar_com_tick_marks_drawable);
+        mTickMarksSweptHide = ta.getBoolean(R.styleable.CommonSeekBar_com_tick_marks_swept_hide, builder.tickMarksSweptHide);
+        mTickMarksEndsHide = ta.getBoolean(R.styleable.CommonSeekBar_com_tick_marks_ends_hide, builder.tickMarksEndsHide);
         //tickTexts
-        mShowTickText = ta.getBoolean(R.styleable.IndicatorSeekBar_isb_show_tick_texts, builder.showTickText);
-        mTickTextsSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_tick_texts_size, builder.tickTextsSize);
-        initTickTextsColor(ta.getColorStateList(R.styleable.IndicatorSeekBar_isb_tick_texts_color), builder.tickTextsColor);
-        mTickTextsCustomArray = ta.getTextArray(R.styleable.IndicatorSeekBar_isb_tick_texts_array);
-        initTextsTypeface(ta.getInt(R.styleable.IndicatorSeekBar_isb_tick_texts_typeface, -1), builder.tickTextsTypeFace);
+        mShowTickText = ta.getBoolean(R.styleable.CommonSeekBar_com_show_tick_texts, builder.showTickText);
+        mTickTextsSize = ta.getDimensionPixelSize(R.styleable.CommonSeekBar_com_tick_texts_size, builder.tickTextsSize);
+        initTickTextsColor(ta.getColorStateList(R.styleable.CommonSeekBar_com_tick_texts_color), builder.tickTextsColor);
+        mTickTextsCustomArray = ta.getTextArray(R.styleable.CommonSeekBar_com_tick_texts_array);
+        initTextsTypeface(ta.getInt(R.styleable.CommonSeekBar_com_tick_texts_typeface, -1), builder.tickTextsTypeFace);
         //indicator
-        mShowIndicatorType = ta.getInt(R.styleable.IndicatorSeekBar_isb_show_indicator, builder.showIndicatorType);
-        mIndicatorColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_color, builder.indicatorColor);
-        mIndicatorTextSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_indicator_text_size, builder.indicatorTextSize);
-        mIndicatorTextColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_text_color, builder.indicatorTextColor);
-        mIndicatorDrawable = ta.getInt(R.styleable.IndicatorSeekBar_isb_indicator_drawable, R.drawable.isb_indicator_rounded_corners);
-        int indicatorContentViewId = ta.getResourceId(R.styleable.IndicatorSeekBar_isb_indicator_content_layout, 0);
+        mShowIndicatorType = ta.getInt(R.styleable.CommonSeekBar_com_show_indicator, builder.showIndicatorType);
+        mIndicatorColor = ta.getColor(R.styleable.CommonSeekBar_com_indicator_color, builder.indicatorColor);
+        mIndicatorTextSize = ta.getDimensionPixelSize(R.styleable.CommonSeekBar_com_indicator_text_size, builder.indicatorTextSize);
+        mIndicatorTextColor = ta.getColor(R.styleable.CommonSeekBar_com_indicator_text_color, builder.indicatorTextColor);
+        mIndicatorDrawable = ta.getInt(R.styleable.CommonSeekBar_com_indicator_drawable, builder.indicatorDrawable);
+        int indicatorContentViewId = ta.getResourceId(R.styleable.CommonSeekBar_com_indicator_content_layout, 0);
         if (indicatorContentViewId > 0) {
             mIndicatorContentView = View.inflate(mContext, indicatorContentViewId, null);
         }
-        int indicatorTopContentLayoutId = ta.getResourceId(R.styleable.IndicatorSeekBar_isb_indicator_top_content_layout, 0);
+        int indicatorTopContentLayoutId = ta.getResourceId(R.styleable.CommonSeekBar_com_indicator_top_content_layout, 0);
         if (indicatorTopContentLayoutId > 0) {
             mIndicatorTopContentView = View.inflate(mContext, indicatorTopContentLayoutId, null);
         }
@@ -264,13 +258,13 @@ public class IndicatorSeekBar extends View {
             mThumbRadius = mThumbSize / 2.0f;
             mThumbTouchRadius = mThumbRadius * 1.2f;
         } else {
-            mThumbRadius = Math.min(SizeUtils.dp2px(mContext, THUMB_MAX_WIDTH), mThumbSize) / 2.0f;
+            mThumbRadius = Math.min(DenyUtils.dp2px(mContext, THUMB_MAX_WIDTH), mThumbSize) / 2.0f;
             mThumbTouchRadius = mThumbRadius;
         }
         if (mTickMarksDrawable == null) {
             mTickRadius = mTickMarksSize / 2.0f;
         } else {
-            mTickRadius = Math.min(SizeUtils.dp2px(mContext, THUMB_MAX_WIDTH), mTickMarksSize) / 2.0f;
+            mTickRadius = Math.min(DenyUtils.dp2px(mContext, THUMB_MAX_WIDTH), mTickMarksSize) / 2.0f;
         }
         mCustomDrawableMaxHeight = Math.max(mThumbTouchRadius, mTickRadius) * 2.0f;
         initStrokePaint();
@@ -305,7 +299,7 @@ public class IndicatorSeekBar extends View {
 
     private void initDefaultPadding() {
         if (!mClearPadding) {
-            int normalPadding = SizeUtils.dp2px(mContext, 16);
+            int normalPadding = DenyUtils.dp2px(mContext, 16);
             if (getPaddingLeft() == 0) {
                 setPadding(normalPadding, getPaddingTop(), getPaddingRight(), getPaddingBottom());
             }
@@ -321,7 +315,7 @@ public class IndicatorSeekBar extends View {
     }
 
     public void setPaddingTop(int paddingTop) {
-        this.mPaddingTop = SizeUtils.dp2px(mContext, paddingTop);
+        this.mPaddingTop = DenyUtils.dp2px(mContext, paddingTop);
     }
 
     private void initProgressRangeValue() {
@@ -354,7 +348,7 @@ public class IndicatorSeekBar extends View {
             initTextPaint();
             mTextPaint.setTypeface(mTextsTypeface);
             mTextPaint.getTextBounds("j", 0, 1, mRect);
-            mTickTextsHeight = mRect.height() + SizeUtils.dp2px(mContext, 3);//with the gap(3dp) between tickTexts and track.
+            mTickTextsHeight = mRect.height() + DenyUtils.dp2px(mContext, 3);//with the gap(3dp) between tickTexts and track.
         }
     }
 
@@ -378,7 +372,7 @@ public class IndicatorSeekBar extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int height = Math.round(mCustomDrawableMaxHeight + getPaddingTop() + getPaddingBottom());
-        setMeasuredDimension(resolveSize(SizeUtils.dp2px(mContext, 170), widthMeasureSpec), height + mTickTextsHeight);
+        setMeasuredDimension(resolveSize(DenyUtils.dp2px(mContext, 170), widthMeasureSpec), height + mTickTextsHeight);
         initSeekBarInfo();
         refreshSeekBarLocation();
     }
@@ -405,7 +399,7 @@ public class IndicatorSeekBar extends View {
             if (mShowTickMarksType == TickMarkType.TEXT) {
                 mTickTextY = mProgressTrack.top + Math.round(mRect.height() - mTextPaint.descent()) / 2;
             } else {
-                mTickTextY = mPaddingTop + mCustomDrawableMaxHeight + Math.round(mRect.height() - mTextPaint.descent()) + SizeUtils.dp2px(mContext, 3);
+                mTickTextY = mPaddingTop + mCustomDrawableMaxHeight + Math.round(mRect.height() - mTextPaint.descent()) + DenyUtils.dp2px(mContext, 3);
             }
             mThumbTextY = mTickTextY;
         }
@@ -607,7 +601,7 @@ public class IndicatorSeekBar extends View {
             if (mShowTickMarksType == TickMarkType.OVAL) {
                 canvas.drawCircle(mTickMarksX[i], mProgressTrack.top, mTickRadius, mStockPaint);
             } else if (mShowTickMarksType == TickMarkType.DIVIDER) {
-                int rectWidth = SizeUtils.dp2px(mContext, 1);
+                int rectWidth = DenyUtils.dp2px(mContext, 1);
                 float dividerTickHeight;
                 if (thumbCenterX >= mTickMarksX[i]) {
                     dividerTickHeight = getLeftSideTrackSize();
@@ -772,7 +766,7 @@ public class IndicatorSeekBar extends View {
         }
         int width;
         int height;
-        int maxRange = SizeUtils.dp2px(mContext, THUMB_MAX_WIDTH);
+        int maxRange = DenyUtils.dp2px(mContext, THUMB_MAX_WIDTH);
         int intrinsicWidth = drawable.getIntrinsicWidth();
         if (intrinsicWidth > maxRange) {
             if (isThumb) {
@@ -805,11 +799,11 @@ public class IndicatorSeekBar extends View {
      * NOTICE: make sure the format of color selector you set is right.
      * int[][] states = colorStateList.getStates();
      * (1) if the states.length == 1,the way you set the thumb color like :
-     * app:isb_thumb_color="#XXXXXX"  or
-     * app:isb_thumb_color="@color/color_name" ;
+     * app:com_thumb_color="#XXXXXX"  or
+     * app:com_thumb_color="@color/color_name" ;
      * <p>
      * (2) if the states.length == 3,the way you set the thumb color like :
-     * app:isb_thumb_color="@color/selector_color_file_name". the file(located at res/color/)'s format should like:
+     * app:com_thumb_color="@color/selector_color_file_name". the file(located at res/color/)'s format should like:
      * <p>
      * <?xml version="1.0" encoding="utf-8"?>
      * <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -862,12 +856,12 @@ public class IndicatorSeekBar extends View {
                         break;
                     default:
                         //the color selector file was set by a wrong format , please see above to correct.
-                        throw new IllegalArgumentException("the selector color file you set for the argument: isb_thumb_color is in wrong format.");
+                        throw new IllegalArgumentException("the selector color file you set for the argument: com_thumb_color is in wrong format.");
                 }
             }
         } else {
             //the color selector file was set by a wrong format , please see above to correct.
-            throw new IllegalArgumentException("the selector color file you set for the argument: isb_thumb_color is in wrong format.");
+            throw new IllegalArgumentException("the selector color file you set for the argument: com_thumb_color is in wrong format.");
         }
 
     }
@@ -879,11 +873,11 @@ public class IndicatorSeekBar extends View {
      * NOTICE: make sure the format of color selector you set is right.
      * int[][] states = colorStateList.getStates();
      * (1) if the states.length == 1,the way you set the tick marks' color like :
-     * app:isb_tick_marks_color="#XXXXXX"  or
-     * app:isb_tick_marks_color="@color/color_name" ;
+     * app:com_tick_marks_color="#XXXXXX"  or
+     * app:com_tick_marks_color="@color/color_name" ;
      * <p>
      * (2) if the states.length == 2,the way you set the tick marks' color like :
-     * app:isb_tick_marks_color="@color/selector_color_file_name". the file(located at res/color/)'s format should like:
+     * app:com_tick_marks_color="@color/selector_color_file_name". the file(located at res/color/)'s format should like:
      * <p>
      * <?xml version="1.0" encoding="utf-8"?>
      * <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -936,12 +930,12 @@ public class IndicatorSeekBar extends View {
                         break;
                     default:
                         //the color selector file was set by a wrong format , please see above to correct.
-                        throw new IllegalArgumentException("the selector color file you set for the argument: isb_tick_marks_color is in wrong format.");
+                        throw new IllegalArgumentException("the selector color file you set for the argument: com_tick_marks_color is in wrong format.");
                 }
             }
         } else {
             //the color selector file was set by a wrong format , please see above to correct.
-            throw new IllegalArgumentException("the selector color file you set for the argument: isb_tick_marks_color is in wrong format.");
+            throw new IllegalArgumentException("the selector color file you set for the argument: com_tick_marks_color is in wrong format.");
         }
     }
 
@@ -952,11 +946,11 @@ public class IndicatorSeekBar extends View {
      * NOTICE: make sure the format of color selector you set is right.
      * int[][] states = colorStateList.getStates();
      * (1) if the states.length == 1,the way you set the tick texts' color like :
-     * app:isb_tick_text_color="#XXXXXX"  or
-     * app:isb_tick_text_color="@color/color_name" ;
+     * app:com_tick_text_color="#XXXXXX"  or
+     * app:com_tick_text_color="@color/color_name" ;
      * <p>
      * (2) if the states.length == 3,the way you set the tick texts' color like :
-     * app:isb_tick_text_color="@color/selector_color_file_name". the file(located at res/color/)'s format should like:
+     * app:com_tick_text_color="@color/selector_color_file_name". the file(located at res/color/)'s format should like:
      * <p>
      * <?xml version="1.0" encoding="utf-8"?>
      * <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -1015,12 +1009,12 @@ public class IndicatorSeekBar extends View {
                         break;
                     default:
                         //the color selector file was set by a wrong format , please see above to correct.
-                        throw new IllegalArgumentException("the selector color file you set for the argument: isb_tick_texts_color is in wrong format.");
+                        throw new IllegalArgumentException("the selector color file you set for the argument: com_tick_texts_color is in wrong format.");
                 }
             }
         } else {
             //the color selector file was set by a wrong format , please see above to correct.
-            throw new IllegalArgumentException("the selector color file you set for the argument: isb_tick_texts_color is in wrong format.");
+            throw new IllegalArgumentException("the selector color file you set for the argument: com_tick_texts_color is in wrong format.");
         }
     }
 
@@ -1062,10 +1056,10 @@ public class IndicatorSeekBar extends View {
      * NOTICE: make sure the format of drawable selector file you set is right.
      * int stateCount = listDrawable.getStateCount();
      * (1) if the drawable instanceof BitmapDrawable,the way you set like :
-     * app:isb_thumb_drawable="@drawable/ic_launcher"
+     * app:com_thumb_drawable="@drawable/ic_launcher"
      * <p>
      * (2) if the drawable instanceof StateListDrawable,the way you set like :
-     * app:isb_thumb_drawable="@drawable/selector_thumb_drawable". the file(located at res/drawable/)'s format should like:
+     * app:com_thumb_drawable="@drawable/selector_thumb_drawable". the file(located at res/drawable/)'s format should like:
      * <p>
      * <?xml version="1.0" encoding="utf-8"?>
      * <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -1121,10 +1115,10 @@ public class IndicatorSeekBar extends View {
      * NOTICE: make sure the format of drawable selector file you set is right.
      * int stateCount = listDrawable.getStateCount();
      * (1) if the drawable instanceof BitmapDrawable,the way you set like :
-     * app:isb_tick_marks_drawable="@drawable/ic_launcher"
+     * app:com_tick_marks_drawable="@drawable/ic_launcher"
      * <p>
      * (2) if the drawable instanceof StateListDrawable,the way you set like :
-     * app:isb_tick_marks_drawable="@drawable/selector_thumb_drawable". the file(located at res/drawable/)'s format should like:
+     * app:com_tick_marks_drawable="@drawable/selector_thumb_drawable". the file(located at res/drawable/)'s format should like:
      * <p>
      * <?xml version="1.0" encoding="utf-8"?>
      * <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -1228,8 +1222,8 @@ public class IndicatorSeekBar extends View {
     @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
-        bundle.putParcelable("isb_instance_state", super.onSaveInstanceState());
-        bundle.putFloat("isb_progress", mProgress);
+        bundle.putParcelable("com_instance_state", super.onSaveInstanceState());
+        bundle.putFloat("com_progress", mProgress);
         return bundle;
     }
 
@@ -1237,8 +1231,8 @@ public class IndicatorSeekBar extends View {
     protected void onRestoreInstanceState(Parcelable state) {
         if (state instanceof Bundle) {
             Bundle bundle = (Bundle) state;
-            setProgress(bundle.getFloat("isb_progress"));
-            super.onRestoreInstanceState(bundle.getParcelable("isb_instance_state"));
+            setProgress(bundle.getFloat("com_progress"));
+            super.onRestoreInstanceState(bundle.getParcelable("com_instance_state"));
             return;
         }
         super.onRestoreInstanceState(state);
@@ -1334,7 +1328,7 @@ public class IndicatorSeekBar extends View {
 
     private boolean isTouchSeekBar(float mX, float mY) {
         if (mFaultTolerance == -1) {
-            mFaultTolerance = SizeUtils.dp2px(mContext, 5);
+            mFaultTolerance = DenyUtils.dp2px(mContext, 5);
         }
         boolean inWidthRange = mX >= (mPaddingLeft - 2 * mFaultTolerance) && mX <= (mMeasuredWidth - mPaddingRight + 2 * mFaultTolerance);
         boolean inHeightRange = mY >= mProgressTrack.top - mThumbTouchRadius - mFaultTolerance && mY <= mProgressTrack.top + mThumbTouchRadius + mFaultTolerance;
@@ -1374,7 +1368,7 @@ public class IndicatorSeekBar extends View {
         }
         if (mIndicator == null) {
             mIndicator = new Indicator(mContext,
-                    this,mIndicatorDrawable,
+                    this, mIndicatorDrawable,
                     mIndicatorColor,
                     mShowIndicatorType,
                     mIndicatorTextSize,
@@ -1741,7 +1735,7 @@ public class IndicatorSeekBar extends View {
             this.mPressedThumbBitmap = null;
         } else {
             this.mThumbDrawable = drawable;
-            this.mThumbRadius = Math.min(SizeUtils.dp2px(mContext, THUMB_MAX_WIDTH), mThumbSize) / 2.0f;
+            this.mThumbRadius = Math.min(DenyUtils.dp2px(mContext, THUMB_MAX_WIDTH), mThumbSize) / 2.0f;
             this.mThumbTouchRadius = mThumbRadius;
             this.mCustomDrawableMaxHeight = Math.max(mThumbTouchRadius, mTickRadius) * 2.0f;
             initThumbBitmap();
@@ -1811,7 +1805,7 @@ public class IndicatorSeekBar extends View {
             this.mSelectTickMarksBitmap = null;
         } else {
             this.mTickMarksDrawable = drawable;
-            this.mTickRadius = Math.min(SizeUtils.dp2px(mContext, THUMB_MAX_WIDTH), mTickMarksSize) / 2.0f;
+            this.mTickRadius = Math.min(DenyUtils.dp2px(mContext, THUMB_MAX_WIDTH), mTickMarksSize) / 2.0f;
             this.mCustomDrawableMaxHeight = Math.max(mThumbTouchRadius, mTickRadius) * 2.0f;
             initTickMarksBitmap();
         }
@@ -2038,7 +2032,7 @@ public class IndicatorSeekBar extends View {
 
     public static class Builder {
         final Context context;
-        public int indicatorDrawable = R.drawable.isb_indicator_rounded_corners;
+        public int indicatorDrawable = R.drawable.com_indicator_rounded_corners;
 
         //seek bar
         float max = 100;
@@ -2091,12 +2085,12 @@ public class IndicatorSeekBar extends View {
 
         public Builder(Context context) {
             this.context = context;
-            this.indicatorTextSize = SizeUtils.sp2px(context, 14);
-            this.trackBackgroundSize = SizeUtils.dp2px(context, 2);
-            this.trackProgressSize = SizeUtils.dp2px(context, 2);
-            this.tickMarksSize = SizeUtils.dp2px(context, 10);
-            this.tickTextsSize = SizeUtils.sp2px(context, 13);
-            this.thumbSize = SizeUtils.dp2px(context, 14);
+            this.indicatorTextSize = DenyUtils.sp2px(context, 14);
+            this.trackBackgroundSize = DenyUtils.dp2px(context, 2);
+            this.trackProgressSize = DenyUtils.dp2px(context, 2);
+            this.tickMarksSize = DenyUtils.dp2px(context, 10);
+            this.tickTextsSize = DenyUtils.sp2px(context, 13);
+            this.thumbSize = DenyUtils.dp2px(context, 14);
         }
 
         public Builder indicatorDrawable(int indicatorDrawable) {
@@ -2109,8 +2103,8 @@ public class IndicatorSeekBar extends View {
          *
          * @return IndicatorSeekBar
          */
-        public IndicatorSeekBar build() {
-            return new IndicatorSeekBar(this);
+        public CommonSeekBar build() {
+            return new CommonSeekBar(this);
         }
 
         /**
@@ -2268,7 +2262,7 @@ public class IndicatorSeekBar extends View {
          * @return Builder
          */
         public Builder indicatorTextSize(int indicatorTextSize) {
-            this.indicatorTextSize = SizeUtils.sp2px(context, indicatorTextSize);
+            this.indicatorTextSize = DenyUtils.sp2px(context, indicatorTextSize);
             return this;
         }
 
@@ -2326,7 +2320,7 @@ public class IndicatorSeekBar extends View {
          * @return Builder
          */
         public Builder trackBackgroundSize(int trackBackgroundSize) {
-            this.trackBackgroundSize = SizeUtils.dp2px(context, trackBackgroundSize);
+            this.trackBackgroundSize = DenyUtils.dp2px(context, trackBackgroundSize);
             return this;
         }
 
@@ -2348,7 +2342,7 @@ public class IndicatorSeekBar extends View {
          * @return Builder
          */
         public Builder trackProgressSize(int trackProgressSize) {
-            this.trackProgressSize = SizeUtils.dp2px(context, trackProgressSize);
+            this.trackProgressSize = DenyUtils.dp2px(context, trackProgressSize);
             return this;
         }
 
@@ -2431,7 +2425,7 @@ public class IndicatorSeekBar extends View {
          * @return Builder
          */
         public Builder thumbSize(int thumbSize) {
-            this.thumbSize = SizeUtils.dp2px(context, thumbSize);
+            this.thumbSize = DenyUtils.dp2px(context, thumbSize);
             return this;
         }
 
@@ -2512,7 +2506,7 @@ public class IndicatorSeekBar extends View {
          * @return Builder
          */
         public Builder tickTextsSize(int tickTextsSize) {
-            this.tickTextsSize = SizeUtils.sp2px(context, tickTextsSize);
+            this.tickTextsSize = DenyUtils.sp2px(context, tickTextsSize);
             return this;
         }
 
@@ -2612,7 +2606,7 @@ public class IndicatorSeekBar extends View {
          * @return Builder
          */
         public Builder tickMarksSize(int tickMarksSize) {
-            this.tickMarksSize = SizeUtils.dp2px(context, tickMarksSize);
+            this.tickMarksSize = DenyUtils.dp2px(context, tickMarksSize);
             return this;
         }
 

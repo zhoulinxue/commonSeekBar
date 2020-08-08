@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.warkiz.indicatorseekbar.R;
-import org.zhx.common.seekbar.IndicatorSeekBar;
+import org.zhx.common.seekbar.CommonSeekBar;
 import org.zhx.common.seekbar.OnSeekChangeListener;
 import org.zhx.common.seekbar.SeekParams;
 
@@ -22,7 +22,7 @@ public class CustomFragment extends BaseFragment {
     @Override
     protected void initView(View root) {
         //set listener
-        IndicatorSeekBar listenerSeekBar = root.findViewById(R.id.listener);
+        CommonSeekBar listenerSeekBar = root.findViewById(R.id.listener);
         final TextView states = root.findViewById(R.id.states);
         states.setText("states: ");
         final TextView progress = root.findViewById(R.id.progress);
@@ -51,7 +51,7 @@ public class CustomFragment extends BaseFragment {
             }
 
             @Override
-            public void onStartTrackingTouch(IndicatorSeekBar seekBar) {
+            public void onStartTrackingTouch(CommonSeekBar seekBar) {
                 states.setText("states: onStart");
                 progress.setText("progress: " + seekBar.getProgress());
                 progress_float.setText("progress_float: " + seekBar.getProgressFloat());
@@ -59,7 +59,7 @@ public class CustomFragment extends BaseFragment {
             }
 
             @Override
-            public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
+            public void onStopTrackingTouch(CommonSeekBar seekBar) {
                 states.setText("states: onStop");
                 progress.setText("progress: " + seekBar.getProgress());
                 progress_float.setText("progress_float: " + seekBar.getProgressFloat());

@@ -12,17 +12,16 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * created by zhuangguangquan on 2017/12/13.
- * <p>
- * https://github.com/warkiz/IndicatorSeekBar
- * <p>
- * Donation/打赏:
- * If this library is helpful to you ,you can give me a donation by:
- *
- * @see <a href="https://www.paypal.me/BuyMeACupOfTeaThx">ZhuanGuangQuan's Paypal</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true">微信支付</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true">支付宝</a>
- * <p>
+ * @ProjectName: commonSeekBar
+ * @Package: org.zhx.common.seekbar
+ * @ClassName: CircleBubbleView
+ * @Description:java类作用描述
+ * @Author: zhouxue
+ * @CreateDate: 2020/8/8 14:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2020/8/8 14:46
+ * @UpdateRemark: 更新说明
+ * @Version:1.0
  */
 
 public class CircleBubbleView extends View {
@@ -67,8 +66,8 @@ public class CircleBubbleView extends View {
         mPaint.setTextSize(mIndicatorTextSize);
         Rect mRect = new Rect();
         mPaint.getTextBounds(maxLengthText, 0, maxLengthText.length(), mRect);
-        mIndicatorWidth = mRect.width() + SizeUtils.dp2px(mContext, 4);
-        int minWidth = SizeUtils.dp2px(mContext, 36);
+        mIndicatorWidth = mRect.width() + DenyUtils.dp2px(mContext, 4);
+        int minWidth = DenyUtils.dp2px(mContext, 36);
         if (mIndicatorWidth < minWidth) {
             mIndicatorWidth = minWidth;
         }

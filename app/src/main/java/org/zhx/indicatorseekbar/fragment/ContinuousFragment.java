@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.warkiz.indicatorseekbar.R;
-import org.zhx.common.seekbar.IndicatorSeekBar;
+import org.zhx.common.seekbar.CommonSeekBar;
 import org.zhx.common.seekbar.OnSeekChangeListener;
 import org.zhx.common.seekbar.SeekParams;
 
@@ -22,20 +22,20 @@ public class ContinuousFragment extends BaseFragment {
     @Override
     protected void initView(View root) {
         //custom indicator text
-        IndicatorSeekBar percent_indicator = root.findViewById(R.id.percent_indicator);
+        CommonSeekBar percent_indicator = root.findViewById(R.id.percent_indicator);
         percent_indicator.setIndicatorTextFormat("${PROGRESS} %");
 
         //scale
-        IndicatorSeekBar scale = root.findViewById(R.id.scale);
+        CommonSeekBar scale = root.findViewById(R.id.scale);
         scale.setDecimalScale(4);
         View contentView = scale.getIndicator().getContentView();
 
         //thumb_drawable
-        IndicatorSeekBar thumb_drawable = root.findViewById(R.id.thumb_drawable);
+        CommonSeekBar thumb_drawable = root.findViewById(R.id.thumb_drawable);
         thumb_drawable.setThumbDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
 
         //set listener
-        IndicatorSeekBar listenerSeekBar = root.findViewById(R.id.listener);
+        CommonSeekBar listenerSeekBar = root.findViewById(R.id.listener);
         final TextView states = root.findViewById(R.id.states);
         states.setText("states: ");
         final TextView progress = root.findViewById(R.id.progress);
@@ -54,7 +54,7 @@ public class ContinuousFragment extends BaseFragment {
             }
 
             @Override
-            public void onStartTrackingTouch(IndicatorSeekBar seekBar) {
+            public void onStartTrackingTouch(CommonSeekBar seekBar) {
                 states.setText("states: onStart");
                 progress.setText("progress: " + seekBar.getProgress());
                 progress_float.setText("progress_float: " + seekBar.getProgressFloat());
@@ -62,7 +62,7 @@ public class ContinuousFragment extends BaseFragment {
             }
 
             @Override
-            public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
+            public void onStopTrackingTouch(CommonSeekBar seekBar) {
                 states.setText("states: onStop");
                 progress.setText("progress: " + seekBar.getProgress());
                 progress_float.setText("progress_float: " + seekBar.getProgressFloat());

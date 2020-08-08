@@ -13,17 +13,16 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 /**
- * created by zhuangguangquan on 2017/9/9
- * <p>
- * https://github.com/warkiz/IndicatorSeekBar
- * <p>
- * Donation/打赏:
- * If this library is helpful to you ,you can give me a donation by:
- *
- * @see <a href="https://www.paypal.me/BuyMeACupOfTeaThx">ZhuanGuangQuan's Paypal</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true">微信支付</a>, or
- * @see <a href="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true">支付宝</a>
- * <p>
+ * @ProjectName: commonSeekBar
+ * @Package: org.zhx.common.seekbar
+ * @ClassName: Indicator
+ * @Description:java类作用描述
+ * @Author: zhouxue
+ * @CreateDate: 2020/8/8 14:46
+ * @UpdateUser: 更新者
+ * @UpdateDate: 2020/8/8 14:46
+ * @UpdateRemark: 更新说明
+ * @Version:1.0
  */
 public class Indicator {
     private final int mWindowWidth;
@@ -36,7 +35,7 @@ public class Indicator {
     private int mIndicatorColor;
     private Context mContext;
     private int mIndicatorType;
-    private IndicatorSeekBar mSeekBar;
+    private CommonSeekBar mSeekBar;
     private View mIndicatorView;
     private View mIndicatorCustomView;
     private View mIndicatorCustomTopContentView;
@@ -45,7 +44,7 @@ public class Indicator {
     private int mIndicatorDrawable;
 
     public Indicator(Context context,
-                     IndicatorSeekBar seekBar,
+                     CommonSeekBar seekBar,
                      int indicatorDrawable,
                      int indicatorColor,
                      int indicatorType,
@@ -64,7 +63,7 @@ public class Indicator {
         this.mIndicatorTextColor = indicatorTextColor;
 
         mWindowWidth = getWindowWidth();
-        mGap = SizeUtils.dp2px(mContext, 2);
+        mGap = DenyUtils.dp2px(mContext, 2);
         initIndicator();
     }
 
@@ -74,7 +73,7 @@ public class Indicator {
                 mIndicatorView = mIndicatorCustomView;
                 //for the custom indicator view, if progress need to show when seeking ,
                 // need a TextView to show progress and this textView 's identify must be progress;
-                int progressTextViewId = mContext.getResources().getIdentifier("isb_progress", "id", mContext.getApplicationContext().getPackageName());
+                int progressTextViewId = mContext.getResources().getIdentifier("com_progress", "id", mContext.getApplicationContext().getPackageName());
                 if (progressTextViewId > 0) {
                     View view = mIndicatorView.findViewById(progressTextViewId);
                     if (view != null) {
@@ -82,10 +81,10 @@ public class Indicator {
                             //progressText
                             mProgressTextView = (TextView) view;
                             mProgressTextView.setText(mSeekBar.getIndicatorTextString());
-                            mProgressTextView.setTextSize(SizeUtils.px2sp(mContext, mIndicatorTextSize));
+                            mProgressTextView.setTextSize(DenyUtils.px2sp(mContext, mIndicatorTextSize));
                             mProgressTextView.setTextColor(mIndicatorTextColor);
                         } else {
-                            throw new ClassCastException("the view identified by isb_progress in indicator custom layout can not be cast to TextView");
+                            throw new ClassCastException("the view identified by com_progress in indicator custom layout can not be cast to TextView");
                         }
                     }
                 }
@@ -97,16 +96,16 @@ public class Indicator {
                 mIndicatorView = new CircleBubbleView(mContext, mIndicatorTextSize, mIndicatorTextColor, mIndicatorColor, "1000");
                 ((CircleBubbleView) mIndicatorView).setProgress(mSeekBar.getIndicatorTextString());
             } else {
-                mIndicatorView = View.inflate(mContext, R.layout.isb_indicator, null);
+                mIndicatorView = View.inflate(mContext, R.layout.com_indicator, null);
                 //container
                 mTopContentView = (LinearLayout) mIndicatorView.findViewById(R.id.indicator_container);
                 //arrow
                 mArrowView = (ArrowView) mIndicatorView.findViewById(R.id.indicator_arrow);
                 mArrowView.setColor(mIndicatorColor);
                 //progressText
-                mProgressTextView = (TextView) mIndicatorView.findViewById(R.id.isb_progress);
+                mProgressTextView = (TextView) mIndicatorView.findViewById(R.id.com_progress);
                 mProgressTextView.setText(mSeekBar.getIndicatorTextString());
-                mProgressTextView.setTextSize(SizeUtils.px2sp(mContext, mIndicatorTextSize));
+                mProgressTextView.setTextSize(DenyUtils.px2sp(mContext, mIndicatorTextSize));
                 mProgressTextView.setTextColor(mIndicatorTextColor);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     mTopContentView.setBackground(getGradientDrawable());
@@ -117,7 +116,7 @@ public class Indicator {
                 if (mIndicatorCustomTopContentView != null) {
                     //for the custom indicator top content view, if progress need to show when seeking ,
                     //need a TextView to show progress and this textView 's identify must be progress;
-                    int progressTextViewId = mContext.getResources().getIdentifier("isb_progress", "id", mContext.getApplicationContext().getPackageName());
+                    int progressTextViewId = mContext.getResources().getIdentifier("com_progress", "id", mContext.getApplicationContext().getPackageName());
                     View topContentView = mIndicatorCustomTopContentView;
                     if (progressTextViewId > 0) {
                         View tv = topContentView.findViewById(progressTextViewId);
@@ -141,7 +140,7 @@ public class Indicator {
         if (mIndicatorType == IndicatorType.ROUNDED_RECTANGLE) {
             tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(mIndicatorDrawable);
         } else {
-            tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(R.drawable.isb_indicator_square_corners);
+            tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(R.drawable.com_indicator_square_corners);
         }
         tvDrawable.setColor(mIndicatorColor);
         return tvDrawable;

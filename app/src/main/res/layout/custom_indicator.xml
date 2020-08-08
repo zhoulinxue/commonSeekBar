@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <org.zhx.common.seekbar.IndicatorStayLayout
+    <org.zhx.common.seekbar.CommoneStayLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,91 +17,91 @@
             style="@style/subtitle_text_style"
             android:text="1. custom indicator text by layout" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_indicator_top_content_layout="@layout/custom_top_content_view_round_miles"
-            app:isb_progress="50"
-            app:isb_show_indicator="rounded_rectangle" />
+            app:com_indicator_top_content_layout="@layout/custom_top_content_view_round_miles"
+            app:com_progress="50"
+            app:com_show_indicator="rounded_rectangle" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="2. custom indicator text by java code" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:id="@+id/custom_indicator_by_java_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="75"
-            app:isb_show_indicator="rectangle"
-            app:isb_show_tick_marks_type="divider"
-            app:isb_ticks_count="6" />
+            app:com_progress="75"
+            app:com_show_indicator="rectangle"
+            app:com_show_tick_marks_type="divider"
+            app:com_ticks_count="6" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="3. custom indicator text by java code" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:background="@color/color_yellow"
             android:id="@+id/custom_indicator_by_java"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_progress="75"
-            app:isb_show_indicator="rectangle"
-            app:isb_show_tick_marks_type="text"
-            app:isb_show_tick_texts="true"
-            app:isb_thumb_is_hide="true"
-            app:isb_tick_texts_array="@array/tick_below_text_length_5"
-            app:isb_ticks_count="5"
-            app:isb_r2l="true"
+            app:com_progress="75"
+            app:com_show_indicator="rectangle"
+            app:com_show_tick_marks_type="text"
+            app:com_show_tick_texts="true"
+            app:com_thumb_is_hide="true"
+            app:com_tick_texts_array="@array/tick_below_text_length_5"
+            app:com_ticks_count="5"
+            app:com_r2l="true"
             android:paddingTop="@dimen/dp10"
-            app:isb_tick_texts_color="@color/color_yellow"
-            app:isb_track_progress_size="@dimen/dp30"
-            app:isb_track_rounded_corners="true" />
+            app:com_tick_texts_color="@color/color_yellow"
+            app:com_track_progress_size="@dimen/dp30"
+            app:com_track_rounded_corners="true" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="4. custom indicator" />
 
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_yellow"
-            app:isb_indicator_content_layout="@layout/custom_indicator_oval"
-            app:isb_progress="75"
-            app:isb_show_tick_texts="true"
-            app:isb_show_indicator="custom"
-            app:isb_show_tick_marks_type="divider"
-            app:isb_ticks_count="6" />
+            app:com_indicator_content_layout="@layout/custom_indicator_oval"
+            app:com_progress="75"
+            app:com_show_tick_texts="true"
+            app:com_show_indicator="custom"
+            app:com_show_tick_marks_type="divider"
+            app:com_ticks_count="6" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="5. custom indicator top content view" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_indicator_top_content_layout="@layout/custom_top_content_view_round"
-            app:isb_progress="75"
-            app:isb_show_indicator="rounded_rectangle"
-            app:isb_show_tick_marks_type="divider"
-            app:isb_ticks_count="6" />
+            app:com_indicator_top_content_layout="@layout/custom_top_content_view_round"
+            app:com_progress="75"
+            app:com_show_indicator="rounded_rectangle"
+            app:com_show_tick_marks_type="divider"
+            app:com_ticks_count="6" />
 
         <TextView
             style="@style/subtitle_text_style"
             android:text="6. custom indicator top content view" />
 
-        <org.zhx.common.seekbar.IndicatorSeekBar
+        <org.zhx.common.seekbar.CommonSeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isb_indicator_top_content_layout="@layout/custom_top_content_view_rect"
-            app:isb_progress="75"
-            app:isb_show_indicator="rectangle"
-            app:isb_show_tick_marks_type="divider"
-            app:isb_ticks_count="6" />
+            app:com_indicator_top_content_layout="@layout/custom_top_content_view_rect"
+            app:com_progress="75"
+            app:com_show_indicator="rectangle"
+            app:com_show_tick_marks_type="divider"
+            app:com_ticks_count="6" />
 
         <include layout="@layout/source_code_link" />
-    </org.zhx.common.seekbar.IndicatorStayLayout>
+    </org.zhx.common.seekbar.CommoneStayLayout>
 
 </ScrollView>

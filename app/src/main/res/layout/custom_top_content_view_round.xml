@@ -19,7 +19,7 @@
         android:textColor="#FFFFFF"/>
 
     <TextView
-        android:id="@+id/isb_progress"
+        android:id="@+id/com_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I am a customized indicator."
