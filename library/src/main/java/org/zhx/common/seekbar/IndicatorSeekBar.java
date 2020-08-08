@@ -150,6 +150,7 @@ public class IndicatorSeekBar extends View {
     private int mThumbTextColor;
     private boolean mHideThumb;
     private boolean mAdjustAuto;
+    private int mIndicatorDrawable;
 
     public IndicatorSeekBar(Context context) {
         this(context, null);
@@ -242,6 +243,7 @@ public class IndicatorSeekBar extends View {
         mIndicatorColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_color, builder.indicatorColor);
         mIndicatorTextSize = ta.getDimensionPixelSize(R.styleable.IndicatorSeekBar_isb_indicator_text_size, builder.indicatorTextSize);
         mIndicatorTextColor = ta.getColor(R.styleable.IndicatorSeekBar_isb_indicator_text_color, builder.indicatorTextColor);
+        mIndicatorDrawable = ta.getInt(R.styleable.IndicatorSeekBar_isb_indicator_drawable, R.drawable.isb_indicator_rounded_corners);
         int indicatorContentViewId = ta.getResourceId(R.styleable.IndicatorSeekBar_isb_indicator_content_layout, 0);
         if (indicatorContentViewId > 0) {
             mIndicatorContentView = View.inflate(mContext, indicatorContentViewId, null);
@@ -1372,7 +1374,7 @@ public class IndicatorSeekBar extends View {
         }
         if (mIndicator == null) {
             mIndicator = new Indicator(mContext,
-                    this,
+                    this,mIndicatorDrawable,
                     mIndicatorColor,
                     mShowIndicatorType,
                     mIndicatorTextSize,
@@ -1529,6 +1531,7 @@ public class IndicatorSeekBar extends View {
         this.mIndicatorTextSize = builder.indicatorTextSize;
         this.mIndicatorContentView = builder.indicatorContentView;
         this.mIndicatorTopContentView = builder.indicatorTopContentView;
+        this.mIndicatorDrawable = builder.indicatorDrawable;
         //track
         this.mBackgroundTrackSize = builder.trackBackgroundSize;
         this.mBackgroundTrackColor = builder.trackBackgroundColor;
@@ -2035,6 +2038,7 @@ public class IndicatorSeekBar extends View {
 
     public static class Builder {
         final Context context;
+        public int indicatorDrawable = R.drawable.isb_indicator_rounded_corners;
 
         //seek bar
         float max = 100;
@@ -2093,6 +2097,11 @@ public class IndicatorSeekBar extends View {
             this.tickMarksSize = SizeUtils.dp2px(context, 10);
             this.tickTextsSize = SizeUtils.sp2px(context, 13);
             this.thumbSize = SizeUtils.dp2px(context, 14);
+        }
+
+        public Builder indicatorDrawable(int indicatorDrawable) {
+            this.indicatorDrawable = indicatorDrawable;
+            return this;
         }
 
         /**

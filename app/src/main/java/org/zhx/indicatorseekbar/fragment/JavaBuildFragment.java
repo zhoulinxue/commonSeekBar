@@ -215,16 +215,14 @@ public class JavaBuildFragment extends BaseFragment {
                 .tickMarksColor(getResources().getColorStateList(R.color.selector_tick_marks_color, null))
                 .tickTextsArray(array_ends)
                 .showTickTexts(true)
-                .showIndicatorType(IndicatorType.CIRCULAR_BUBBLE)
-                .tickTextsColorStateList(getResources().getColorStateList(R.color.selector_tick_texts_3_color, null))
-                .indicatorColor(getResources().getColor(R.color.color_blue, null))
-                .indicatorTextColor(Color.parseColor("#ffffff"))
-                .thumbColor(Color.parseColor("#ff0000"))
-                .trackProgressColor(getResources().getColor(R.color.color_blue, null))
+                .showIndicatorType(IndicatorType.ROUNDED_RECTANGLE)
+                .trackProgressColor(getResources().getColor(R.color.color_FF5DA0, null))
                 .trackProgressSize(25)
-                .trackBackgroundColor(getResources().getColor(R.color.color_pink, null))
+                .trackBackgroundColor(getResources().getColor(R.color.color_FFC4DC, null))
                 .trackBackgroundSize(25)
+                .tickTextsColor(getResources().getColor(R.color.color_white))
                 .PaddingTop(10)
+                .indicatorDrawable(R.drawable.indicator_rounded_corners)
                 .trackRoundedCorners(true);
 
         IndicatorStayLayout stayLayout = new IndicatorStayLayout(getContext());

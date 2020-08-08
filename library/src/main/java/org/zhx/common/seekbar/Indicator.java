@@ -42,9 +42,11 @@ public class Indicator {
     private View mIndicatorCustomTopContentView;
     private float mIndicatorTextSize;
     private int mIndicatorTextColor;
+    private int mIndicatorDrawable;
 
     public Indicator(Context context,
                      IndicatorSeekBar seekBar,
+                     int indicatorDrawable,
                      int indicatorColor,
                      int indicatorType,
                      int indicatorTextSize,
@@ -53,6 +55,7 @@ public class Indicator {
                      View indicatorCustomTopContentView) {
         this.mContext = context;
         this.mSeekBar = seekBar;
+        this.mIndicatorDrawable = indicatorDrawable;
         this.mIndicatorColor = indicatorColor;
         this.mIndicatorType = indicatorType;
         this.mIndicatorCustomView = indicatorCustomView;
@@ -136,7 +139,7 @@ public class Indicator {
     private GradientDrawable getGradientDrawable() {
         GradientDrawable tvDrawable;
         if (mIndicatorType == IndicatorType.ROUNDED_RECTANGLE) {
-            tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(R.drawable.isb_indicator_rounded_corners);
+            tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(mIndicatorDrawable);
         } else {
             tvDrawable = (GradientDrawable) mContext.getResources().getDrawable(R.drawable.isb_indicator_square_corners);
         }

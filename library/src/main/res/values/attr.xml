@@ -25,6 +25,8 @@
         <attr name="isb_indicator_text_size" format="dimension|reference" /><!-- indicator's text size, default 14sp-->
         <attr name="isb_indicator_content_layout" format="reference" /><!-- when you set indicator type to custom , you can set ths indicator layout you want-->
         <attr name="isb_indicator_top_content_layout" format="reference" /> <!--set the indicator's top view you want, not impact arrow , effect on indicator type : rectangle or rectangle_rounded_corner-->
+        <attr name="isb_indicator_drawable" format="reference|color" />
+
         //track
         <attr name="isb_track_background_size" format="dimension|reference" /><!-- set indicatorSeekBar's track background bar size, default 2dp-->
         <attr name="isb_track_background_color" format="color|reference" /><!-- set indicatorSeekBar's track background bar color, default #D7D7D7-->
