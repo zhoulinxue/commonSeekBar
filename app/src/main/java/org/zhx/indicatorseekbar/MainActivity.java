@@ -15,6 +15,7 @@ import org.zhx.indicatorseekbar.fragment.CustomFragment;
 import org.zhx.indicatorseekbar.fragment.DiscreteFragment;
 import org.zhx.indicatorseekbar.fragment.IndicatorFragment;
 import org.zhx.indicatorseekbar.fragment.JavaBuildFragment;
+import org.zhx.indicatorseekbar.fragment.NewAddFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private static String[] sType = new String[]{"continuous", "discrete", "custom", "java", "indicator"};
+    private static String[] sType = new String[]{"new","continuous", "discrete", "custom", "java", "indicator"};
     private List<Fragment> mFragmentList = new ArrayList<>();
 
     @Override
@@ -41,6 +42,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initFragment() {
+        mFragmentList.add(new NewAddFragment());
         mFragmentList.add(new ContinuousFragment());
         mFragmentList.add(new DiscreteFragment());
         mFragmentList.add(new CustomFragment());
