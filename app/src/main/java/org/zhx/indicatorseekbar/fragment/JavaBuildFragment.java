@@ -211,7 +211,6 @@ public class JavaBuildFragment extends BaseFragment {
                 .min(Integer.valueOf(array_ends[0]))
                 .progress(Integer.valueOf(array_ends[0]))
                 .tickCount(array_ends.length)
-                .showTickMarksType(TickMarkType.TEXT)
                 .tickMarksColor(getResources().getColorStateList(R.color.selector_tick_marks_color, null))
                 .tickTextsArray(array_ends)
                 .showTickTexts(true)

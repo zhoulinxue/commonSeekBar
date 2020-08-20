@@ -53,7 +53,6 @@
             <enum name="oval" value="1" />
             <enum name="square" value="2" />
             <enum name="divider" value="3" /> <!--show tickMarks shape as vertical line , line'size is 1 dp.-->
-            <enum name="text" value="4" /> <!--show tickMarks shape as vertical line , line'size is 1 dp.-->
         </attr>
         //tickTexts
         <attr name="com_show_tick_texts" format="boolean" /><!--show the text below tick or not, default false-->
@@ -65,6 +64,11 @@
             <enum name="monospace" value="1" />
             <enum name="sans" value="2" />
             <enum name="serif" value="3" />
+        </attr>
+        <attr name="com_tick_texts_gravity">
+            <enum name="in" value="0" />
+            <enum name="side" value="1" />
+            <enum name="bottom" value="2" />
         </attr>
     </declare-styleable>
 </resources>

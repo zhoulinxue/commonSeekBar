@@ -12,6 +12,7 @@ import org.zhx.common.seekbar.CommonSeekBar;
 import org.zhx.common.seekbar.CommoneStayLayout;
 import org.zhx.common.seekbar.IndicatorType;
 import org.zhx.common.seekbar.TickMarkType;
+import org.zhx.common.seekbar.TickTextGravity;
 
 /**
  * @ProjectName: commonSeekBar
@@ -44,16 +45,17 @@ public class NewAddFragment extends BaseFragment {
                 .min(Integer.valueOf(array_ends[0]))
                 .progress(Integer.valueOf(array_ends[0]))
                 .tickCount(array_ends.length)
-                .showTickMarksType(TickMarkType.TEXT)
-                .tickTextsArray(array_ends)
+                .showTickMarksType(TickMarkType.NONE)
                 .showTickTexts(true)
+                .tickTextGravity(TickTextGravity.IN)
+                .tickTextsArray(array_ends)
                 .showIndicatorType(IndicatorType.ROUNDED_RECTANGLE)
-                .trackProgressColor(getResources().getColor(R.color.color_FF5DA0))
-                .trackProgressSize(25)
-                .trackBackgroundColor(getResources().getColor(R.color.color_FFC4DC))
-                .trackBackgroundSize(25)
+                .trackProgressColor(getResources().getColor(R.color.color_FF8566))
+                .trackProgressSize(15)
+                .trackBackgroundColor(getResources().getColor(R.color.color_blue))
+                .trackBackgroundSize(15)
                 .tickTextsColor(getResources().getColor(R.color.color_white))
-                .PaddingTop(10)
+                .indicatorColor(getResources().getColor(R.color.color_FF8566))
                 .trackRoundedCorners(true);
         CommoneStayLayout stayLayout = new CommoneStayLayout(getActivity());
         mBar = mBuilder.build();

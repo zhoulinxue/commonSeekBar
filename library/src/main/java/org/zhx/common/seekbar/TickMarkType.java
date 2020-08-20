@@ -30,8 +30,4 @@ public interface TickMarkType {
      * show tickMarks shape as vertical line , line'size is 2 dp.
      */
     int DIVIDER = 3;
-    /**
-     * show tickMarks  as Text size is TickText's size
-     */
-    int TEXT = 4;
 }

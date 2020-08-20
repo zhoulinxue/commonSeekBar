@@ -96,6 +96,7 @@ public class CommonSeekBar extends View {
     private int mUnselectedTextsColor;//the color for the tick texts those thumb haven't reach.
     private int mHoveredTextColor;//the color for the tick texts which below/above thumb.
     private CharSequence[] mTickTextsCustomArray;
+    private int mTextGravity;
     //indicator
     private Indicator mIndicator;//the pop window above the seek bar
     private int mIndicatorColor;
@@ -145,6 +146,7 @@ public class CommonSeekBar extends View {
     private boolean mHideThumb;
     private boolean mAdjustAuto;
     private int mIndicatorDrawable;
+
 
     public CommonSeekBar(Context context) {
         this(context, null);
@@ -231,6 +233,7 @@ public class CommonSeekBar extends View {
         mTickTextsSize = ta.getDimensionPixelSize(R.styleable.CommonSeekBar_com_tick_texts_size, builder.tickTextsSize);
         initTickTextsColor(ta.getColorStateList(R.styleable.CommonSeekBar_com_tick_texts_color), builder.tickTextsColor);
         mTickTextsCustomArray = ta.getTextArray(R.styleable.CommonSeekBar_com_tick_texts_array);
+        mTextGravity = ta.getInt(R.styleable.CommonSeekBar_com_tick_texts_gravity, builder.textGravity);
         initTextsTypeface(ta.getInt(R.styleable.CommonSeekBar_com_tick_texts_typeface, -1), builder.tickTextsTypeFace);
         //indicator
         mShowIndicatorType = ta.getInt(R.styleable.CommonSeekBar_com_show_indicator, builder.showIndicatorType);
@@ -353,7 +356,7 @@ public class CommonSeekBar extends View {
     }
 
     private boolean needDrawText() {
-        return (mShowTickText && mShowTickMarksType == TickMarkType.TEXT) || mShowThumbText || (mTicksCount != 0 && mShowTickText);
+        return mShowTickText || mShowThumbText || (mTicksCount != 0 && mShowTickText);
     }
 
     private void initTextPaint() {
@@ -396,12 +399,7 @@ public class CommonSeekBar extends View {
         //init TickTexts Y Location
         if (needDrawText()) {
             mTextPaint.getTextBounds("j", 0, 1, mRect);
-            if (mShowTickMarksType == TickMarkType.TEXT) {
-                mTickTextY = mProgressTrack.top + Math.round(mRect.height() - mTextPaint.descent()) / 2;
-            } else {
-                mTickTextY = mPaddingTop + mCustomDrawableMaxHeight + Math.round(mRect.height() - mTextPaint.descent()) + DenyUtils.dp2px(mContext, 3);
-            }
-            mThumbTextY = mTickTextY;
+            setTickTextGravity(mTextGravity);
         }
         //init tick's X and text's X location;
         if (mTickMarksX == null) {
@@ -415,6 +413,19 @@ public class CommonSeekBar extends View {
             lastProgress = mProgress;
         }
         refreshThumbCenterXByProgress(mProgress);
+    }
+
+    private void setTickTextGravity(int textGravity) {
+        switch (textGravity) {
+            case TickTextGravity.IN:
+                mTickTextY = mProgressTrack.top + Math.round(mRect.height() - mTextPaint.descent()) / 2;
+                break;
+            case TickTextGravity.BOTTOM:
+            case TickTextGravity.SIDE:
+                mTickTextY = mPaddingTop + mCustomDrawableMaxHeight + Math.round(mRect.height() - mTextPaint.descent()) + DenyUtils.dp2px(mContext, 3);
+                break;
+        }
+        mThumbTextY = mTickTextY;
     }
 
     private void initTextsArray() {
@@ -524,42 +535,53 @@ public class CommonSeekBar extends View {
             }
         } else {
             //draw BG track
-            mStockPaint.setColor(mBackgroundTrackColor);
-            mStockPaint.setStrokeWidth(mBackgroundTrackSize);
-            canvas.drawLine(mBackgroundTrack.left, mBackgroundTrack.top, mBackgroundTrack.right, mBackgroundTrack.bottom, mStockPaint);
+            drawlinetrack(canvas, mBackgroundTrackColor, mBackgroundTrackSize, mBackgroundTrack);
             //draw progress track
             mStockPaint.setColor(mProgressTrackColor);
             mStockPaint.setStrokeWidth(mProgressTrackSize);
-//            mShowTickMarksType == TickMarkType.TEXT ? mTextCenterX[i] - mTickTextsWidth[index] / 2.0f : mTextCenterX[i]
             float right = mProgressTrack.right;
             float left = mProgressTrack.left;
-            if (mShowTickMarksType == TickMarkType.TEXT) {
-                if (!mR2L) {
-                    int index = getClosestIndex();
-                    if (index == 0) {
-                        right = mProgressTrack.right + mTickTextsWidth[index];
-                    } else if (index == sectionSize) {
-                        right = mBackgroundTrack.right;
-                    } else {
-                        right = mProgressTrack.right + mTickTextsWidth[index] / 2;
-                    }
-                } else {
-                    int index = getClosestIndex();
-                    if (index == 0) {
-                        left = mProgressTrack.left - mTickTextsWidth[index];
-                    } else if (index == sectionSize) {
-                        left = mBackgroundTrack.left;
-                    } else {
-                        left = mProgressTrack.left - mTickTextsWidth[index] / 2;
-                    }
-                }
-            }
-            canvas.drawLine(left, mProgressTrack.top, right, mProgressTrack.bottom, mStockPaint);
+            drawProgess(canvas, right, left, sectionSize);
         }
     }
 
+    private void drawlinetrack(Canvas canvas, int trackColor, int trackSize, RectF rect) {
+        mStockPaint.setColor(trackColor);
+        mStockPaint.setStrokeWidth(trackSize);
+        canvas.drawLine(rect.left, rect.top, rect.right, rect.bottom, mStockPaint);
+    }
+
+    private void drawProgess(Canvas canvas, float right, float left, int sectionSize) {
+        if (needDrawText())
+            switch (mTextGravity) {
+                case TickTextGravity.IN:
+                    if (!mR2L) {
+                        int index = getClosestIndex();
+                        if (index == 0) {
+                            right = mProgressTrack.right + mTickTextsWidth[index];
+                        } else if (index == sectionSize) {
+                            right = mBackgroundTrack.right;
+                        } else {
+                            right = mProgressTrack.right + mTickTextsWidth[index] / 2;
+                        }
+                    } else {
+                        int index = getClosestIndex();
+                        if (index == 0) {
+                            left = mProgressTrack.left - mTickTextsWidth[index];
+                        } else if (index == sectionSize) {
+                            left = mBackgroundTrack.left;
+                        } else {
+                            left = mProgressTrack.left - mTickTextsWidth[index] / 2;
+                        }
+                    }
+                    break;
+            }
+        RectF rectF = new RectF(left, mProgressTrack.top, right, mProgressTrack.bottom);
+        drawlinetrack(canvas, mProgressTrackColor, mProgressTrackSize, rectF);
+    }
+
     private void drawTickMarks(Canvas canvas) {
-        if (mTicksCount == 0 || (mShowTickMarksType == TickMarkType.NONE && mTickMarksDrawable == null) || mShowTickMarksType == TickMarkType.TEXT) {
+        if (mTicksCount == 0 || (mShowTickMarksType == TickMarkType.NONE && mTickMarksDrawable == null)) {
             return;
         }
         float thumbCenterX = getThumbCenterX();
@@ -1550,6 +1572,7 @@ public class CommonSeekBar extends View {
         this.mTickTextsSize = builder.tickTextsSize;
         this.mTickTextsCustomArray = builder.tickTextsCustomArray;
         this.mTextsTypeface = builder.tickTextsTypeFace;
+        this.mTextGravity = builder.textGravity;
         initTickTextsColor(builder.tickTextsColorStateList, builder.tickTextsColor);
     }
 
@@ -2073,6 +2096,7 @@ public class CommonSeekBar extends View {
         String[] tickTextsCustomArray = null;
         Typeface tickTextsTypeFace = Typeface.DEFAULT;
         ColorStateList tickTextsColorStateList = null;
+        private int textGravity = TickTextGravity.BOTTOM;
         //tickMarks
         int tickCount = 0;
         int showTickMarksType = TickMarkType.NONE;
@@ -2091,6 +2115,11 @@ public class CommonSeekBar extends View {
             this.tickMarksSize = DenyUtils.dp2px(context, 10);
             this.tickTextsSize = DenyUtils.sp2px(context, 13);
             this.thumbSize = DenyUtils.dp2px(context, 14);
+        }
+
+        public Builder tickTextGravity(int gravity) {
+            this.textGravity = gravity;
+            return this;
         }
 
         public Builder indicatorDrawable(int indicatorDrawable) {
